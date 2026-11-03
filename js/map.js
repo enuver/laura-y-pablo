@@ -118,14 +118,14 @@
 
       // nodos de pruebas (+ boda)
       const nodes = [];
-      C().TRIALS.forEach((T, i) => nodes.push({ i, x: NODES[i].x, y: NODES[i].y, name: T.name, num: String(i + 1) }));
+      C().TRIALS.forEach((T, i) => nodes.push({ i, x: NODES[i].x, y: NODES[i].y, name: i === 0 ? "Siguiente destino" : T.name, num: String(i + 1) }));
       nodes.push({ i: 4, x: N.boda.x, y: N.boda.y, name: "Parroquia de San José Obrero", num: "♥" });
       nodes.forEach((n) => {
         const b = h("button", { class: "node", type: "button", "data-i": n.i, style: `left:${n.x}%;top:${n.y / 1.2}%`,
           onclick() { onNode && onNode(n.i); } },
           h("span", { class: "node-num", "aria-hidden": "true", text: n.num }),
           h("span", { class: "node-badge", "aria-hidden": "true" }));
-        const label = h("span", { class: "node-label", style: `left:${n.x}%;top:${(n.i === 4 ? 2.4 : n.y + 7.4) / 1.2}%`, text: n.name });
+        const label = h("span", { class: "node-label", "data-i": n.i, style: `left:${n.x}%;top:${(n.i === 4 ? 2.4 : n.y + 7.4) / 1.2}%`, text: n.name });
         board.append(b, label);
       });
 
@@ -188,7 +188,9 @@
         b.disabled = locked || isDone;
         const badge = b.querySelector(".node-badge");
         badge.textContent = isDone ? "✓" : locked ? "🔒" : "▶";
-        const nm = isBoda ? "Parroquia de San José Obrero" : "Prueba " + (i + 1) + ": " + C().TRIALS[i].name;
+        const shown = (!isBoda && i === 0 && !items[0]) ? "Siguiente destino" : (isBoda ? "" : C().TRIALS[i].name);
+        const nm = isBoda ? "Parroquia de San José Obrero" : "Prueba " + (i + 1) + ": " + shown;
+        if (i === 0) { const lb = board.querySelector('.node-label[data-i="0"]'); if (lb) lb.textContent = shown; }
         const st = isDone ? C().UI.DONE : locked ? C().UI.LOCKED : isBoda ? "Ir a la boda" : "Disponible";
         b.setAttribute("aria-label", nm + ". " + st);
       });

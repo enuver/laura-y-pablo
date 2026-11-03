@@ -85,7 +85,7 @@
     updateCta() {
       const cta = $(".map-cta"); if (!cta) return;
       const n = QM.nextTrial();
-      cta.textContent = n === -1 ? "Ir a la boda ♥" : "Jugar: " + C().TRIALS[n].name;
+      cta.textContent = n === -1 ? "Ir a la boda ♥" : n === 0 ? "Camino al siguiente destino" : "Jugar: " + C().TRIALS[n].name;
     },
     async walkTo(p) {
       if (p === boardPos) { QM.map.refresh(board, p); return; }
