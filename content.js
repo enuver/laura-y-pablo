@@ -106,7 +106,7 @@ DIALOGS: {
 
   intro: [
     ["narr",  "Queda un mes para la boda de Laura y Pablo. Y, como en toda boda que se precie, falta justo lo más importante."],
-    ["laura", "¡{apodo}! ¡{apodo}, mírame! Que he hecho la lista, y he repasado la lista, y luego he repasado la lista de la lista, y resulta que faltan cuatro cosas: la invitación, el micrófono, el menú definitivo y… ¡las alianzas! ¡Las alianzas, Pablo! Que las tenía en la mano hace un momento y ahora no sé si las he guardado en el bolso, en el otro bolso o en el microondas. No me mires así. ¿Por qué me miras así? ¿Estoy hablando mucho? Dime algo."],
+    ["laura", "¡{apodo}! ¡{apodo}, mírame! Que he hecho la lista, y he repasado la lista, y luego he repasado la lista de la lista, y resulta que faltan tres cosas: la música, el menú de la boda y… ¡las alianzas! ¡Las alianzas, Pablo! Que las tenía en la mano hace un momento y ahora no sé si las he guardado en el bolso, en el otro bolso o en el microondas. No me mires así. ¿Por qué me miras así? ¿Estoy hablando mucho? Dime algo."],
     ["pablo", "..."],
     ["laura", "Eso es un «vamos a por ellas», ¿verdad?"],
     ["pablo", "...Sí."],
@@ -131,7 +131,7 @@ DIALOGS: {
     ["laura", "¡Lo hemos conseguido! ¡Pablo, has estado ahí, con tu cara de póker, aportando serenidad mientras yo gritaba las respuestas antes de que acabara la pregunta!"],
     ["pablo", "...Gracias."],
     ["host",  "Y ahora, el premio: ¿esto es vuestro? Laura, lo dejaste aquí el otro día. Es una invitación."],
-    ["laura", "¡LA INVITACIÓN! ¡La estaba buscando por todas partes! ¡Pensé que estaba en el bolso, o en el otro bolso, o en el microondas! ¡Gracias, gracias, gracias!"],
+    ["laura", "¡LA INVITACIÓN! ¡Pero si ni sabía que la había perdido! ¡Qué despiste el mío! ¡Gracias, gracias, gracias, Eugeni! ¡Un desvío creativo con premio!"],
     ["pablo", "...Menos mal."],
     ["narr",  "Se subieron al coche. Esta vez, Pablo llevaba el mapa."],
   ],
@@ -193,7 +193,7 @@ DIALOGS: {
 
   final_intro: [
     ["narr",  "Cuatro pruebas. Cuatro objetos. Un mapa que ya tiene todos sus colores."],
-    ["laura", "¡Lo tenemos todo! Invitación, micrófono, menú, alianzas… ¡todo! ¡Y todavía {faltan}! ¡Pablo, vamos sobradísimos!"],
+    ["laura", "¡Lo tenemos todo! invitación, micrófono, menú, alianzas… ¡todo! ¡Y todavía {faltan}! ¡Pablo, vamos sobradísimos!"],
     ["pablo", "...Ya veremos."],
     ["laura", "¡Eso es optimismo, {apodo}!"],
   ],
