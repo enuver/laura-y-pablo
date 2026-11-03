@@ -12,7 +12,7 @@
   const LOOKS = {
     laura: {
       skin: "#f3c9ac", hair: "#2a1a16", hairHi: "#4b2f27", lips: "#c9354b", blush: "#f19a9a",
-      top: "#e8b04a", top2: "#fff1c9", bottom: "#1d1822", hem: "#1d1822", shoes: "#c9a77a", earring: "#f2b134", frameL: "#ff3d9a", frameR: "#19c3b5", frameT: "#ffd23f",
+      top: "#e8b04a", top2: "#fff1c9", bottom: "#1d1822", hem: "#1d1822", shoes: "#c9a77a", earring: "#f2b134", frameL: "#ff3d9a", frameR: "#ff3d9a", frameT: "#19c3b5",
     },
     pablo: {
       skin: "#ebbf9f", hair: "#6b4125", hairHi: "#8a5a33", beard: "#b4562a", beardDk: "#8f3f1c",
@@ -116,7 +116,7 @@
     R(12, 3, 5, 1, L.hairHi); R(10, 5, 2, 1, L.hairHi);
     R(8, 16, 2, 2, L.earring); R(22, 16, 2, 2, L.earring);   // pendientes cuadrados
     // gafas de colorines
-    R(10, 10, 6, 5, L.frameL); R(17, 10, 6, 5, L.frameR); R(16, 10, 1, 1, L.frameT); R(11, 11, 4, 3, "#fff6e0"); R(18, 11, 4, 3, "#fff6e0"); R(9, 11, 1, 1, L.frameT); R(23, 11, 1, 1, L.frameT);
+    R(10, 10, 6, 5, L.frameL); R(17, 10, 6, 5, L.frameR); R(16, 10, 1, 1, L.frameL); R(11, 11, 4, 3, "#fff6e0"); R(18, 11, 4, 3, "#fff6e0"); R(9, 11, 1, 1, L.frameT); R(23, 11, 1, 1, L.frameT);
     eyes(R, pose, 12, INK, true);
     R(10, 15, 2, 1, L.blush); R(20, 15, 2, 1, L.blush);
     mouth(R, pose, L.lips, null);
