@@ -34,7 +34,7 @@ NAMES: {
   laura: "Laura",
   pablo: "Pablo",
   leire: "Leire",
-  host: "Tito Destello",      // presentador inventado del concurso
+  host: "Eugeni Alemany",     // presentador del concurso
   caos: "El Caos",
   narr: "",
 },
@@ -51,7 +51,7 @@ WEDDING: {
   PARTY: "Convite en la Huerta de Peñalén",
   // Se muestra cuando ya ha llegado la fecha:
   AFTER_TITLE: "¡Enhorabuena, Laura y Pablo!",
-  AFTER_TEXT: "Hoy el mapa entero se ha puesto a todo color. Que seáis muy felices, que no os falte el humor, los colores ni el «...» en el momento justo.",
+  AFTER_TEXT: "Hoy el mapa entero se ha puesto de Navidad. Que seáis muy felices, que no os falte el humor, los colores ni el «...» en el momento justo.",
   // Mensaje intermedio el mismo día de la boda, antes de la hora:
   TODAY_TEXT: "¡Es hoy! Respirad hondo, Laura (y habla un poco menos, que hay que guardar voz para el «sí, quiero»).",
 },
@@ -65,9 +65,9 @@ DEDICATION: {
 
 /* ---------------------------------------------------------------- OBJETOS */
 ITEMS: [
-  { id: "pulsador",   name: "El Pulsador del concurso", desc: "Clic, clic… ¡y a por la respuesta!" },
-  { id: "batuta",     name: "La Batuta de Laura",       desc: "Con ella, hasta el caos suena afinado." },
-  { id: "invitacion", name: "La Invitación al convite", desc: "Sin ella no se entra al banquete." },
+  { id: "pulsador",   name: "El Pulsador del concurso", desc: "Sirve para… bueno, nadie sabe para qué lo queremos." },
+  { id: "microfono",  name: "El Micrófono de Laura",    desc: "Con él, hasta el caos suena afinado." },
+  { id: "menu",        name: "El Menú definitivo",       desc: "Aprobado por todos, hasta por los cuñados." },
   { id: "alianzas",   name: "Las Alianzas",             desc: "Dos aros, una promesa. Ya sí: no falta nada." },
 ],
 
@@ -106,7 +106,7 @@ DIALOGS: {
 
   intro: [
     ["narr",  "Queda un mes para la boda de Laura y Pablo. Y, como en toda boda que se precie, falta justo lo más importante."],
-    ["laura", "¡{apodo}! ¡{apodo}, mírame! Que he hecho la lista, y he repasado la lista, y luego he repasado la lista de la lista, y resulta que faltan cuatro cosas: el pulsador, mi batuta, la invitación al convite y… ¡las alianzas! ¡Las alianzas, Pablo! Que las tenía en la mano hace un momento y ahora no sé si las he guardado en el bolso, en el otro bolso o en el microondas. No me mires así. ¿Por qué me miras así? ¿Estoy hablando mucho? Dime algo."],
+    ["laura", "¡{apodo}! ¡{apodo}, mírame! Que he hecho la lista, y he repasado la lista, y luego he repasado la lista de la lista, y resulta que faltan cuatro cosas: el pulsador, el micrófono, el menú definitivo y… ¡las alianzas! ¡Las alianzas, Pablo! Que las tenía en la mano hace un momento y ahora no sé si las he guardado en el bolso, en el otro bolso o en el microondas. No me mires así. ¿Por qué me miras así? ¿Estoy hablando mucho? Dime algo."],
     ["pablo", "..."],
     ["laura", "Eso es un «vamos a por ellas», ¿verdad?"],
     ["pablo", "...Sí."],
@@ -114,11 +114,15 @@ DIALOGS: {
   ],
 
   t1_intro: [
-    ["narr",  "Plató de televisión. Focos, un marcador y un ficus que hace de público."],
-    ["host",  "¡Bienvenidos, bienvenidos, bienvenidos! Hoy tenemos el plató a reventar: tres focos, un ficus y vosotros dos."],
+    ["narr",  "Rumbo a la prueba de menú en la Huerta de Peñalén. Laura va dando indicaciones."],
+    ["laura", "¡Que sí, que es por aquí! Mira, una vaca. ¡Esa vaca la conozco! Bueno, no, pero es igualita que otra vaca que vi, y junto a la vaca se gira a la izquierda, o a la derecha, la vaca no lo decía, ¡y mira qué bonita la vaca!"],
+    ["pablo", "...Nos hemos perdido."],
+    ["laura", "¡No nos hemos perdido! ¡Hemos tomado la salida creativa!"],
+    ["narr",  "La salida creativa da a un plató de televisión. Focos, un marcador y un ficus que hace de público."],
+    ["host",  "¡Bienvenidos, bienvenidos, bienvenidos! Soy Eugeni Alemany. Hoy tenemos el plató a reventar: tres focos, un ficus y vosotros dos."],
     ["host",  "Me cuentan que Laura ya ha pisado más de un concurso, así que los nervios del pulsador no tendrán secretos para ella. ¿Y Pablo? ¿Pablo?"],
     ["pablo", "..."],
-    ["host",  "Perfecto: hombre de pocas palabras. Reglas: seis categorías, una medalla por categoría, dos aciertos por medalla. Con cinco fallos se apagan los focos. ¡Y el premio es el Pulsador que os falta!"],
+    ["host",  "Perfecto: hombre de pocas palabras. Reglas: seis categorías, una medalla por categoría, dos aciertos por medalla. Con cinco fallos se apagan los focos. ¡Y el premio es un Pulsador!"],
     ["laura", "¡Yo me sé todas! Bueno, todas no, pero sé las que sé y las que no sé las sé a medias, que es casi saberlas, y además tengo experiencia, que lo ha dicho él, y ¡{apodo} sabe un montón de cosas aunque no las diga!"],
     ["pablo", "...Vamos."],
   ],
@@ -127,11 +131,15 @@ DIALOGS: {
     ["laura", "¡Lo hemos conseguido! ¡Pablo, has estado ahí, con tu cara de póker, aportando serenidad mientras yo gritaba las respuestas antes de que acabara la pregunta!"],
     ["pablo", "...Gracias."],
     ["host",  "Aquí tenéis vuestro premio: el Pulsador del concurso. Úsalo con responsabilidad."],
+    ["laura", "¡Un pulsador! Y... ¿esto para qué lo queremos?"],
+    ["pablo", "...No sé."],
+    ["laura", "¡Ni yo! ¡Pero mola un montón!"],
+    ["narr",  "Se subieron al coche. Esta vez, Pablo llevaba el mapa."],
   ],
 
   t2_intro: [
-    ["narr",  "Ensayo del coro Betsaida. Sobre el atril, entre partituras, brilla la Batuta de Laura."],
-    ["laura", "¡Atención, atención! Aquí es donde yo reino. Cuatro voces: soprano, contralto, tenor y bajo. Yo canto una secuencia, vosotros la repetís, y cada vez más rápido, que el que no corre… ¡desafina! Respirad, relajad los hombros, abrid la boca como si fuerais a decir «a»… ¡Pablo! ¿Alguna duda?"],
+    ["narr",  "Ensayo del coro Betsaida. Sobre el atril, entre partituras, brilla el Micrófono de Laura."],
+    ["laura", "¡Atención, atención! Aquí es donde yo reino. Cuatro grupos: las altas, las medias, los chicos y los músicos, con guitarra y percusión. Yo marco una secuencia, vosotros la repetís, y cada vez más rápido, que el que no corre… ¡desafina! Respirad, relajad los hombros, abrid la boca como si fuerais a decir «a»… ¡Pablo! ¿Alguna duda?"],
     ["pablo", "..."],
     ["laura", "Perfecto, ninguna duda."],
   ],
@@ -140,19 +148,19 @@ DIALOGS: {
     ["pablo", "...Bonito."],
     ["laura", "¿«Bonito»? ¡Ha sido sublime!"],
     ["pablo", "...Sublime."],
-    ["narr",  "Laura recupera su Batuta. Estaba bajo la partitura, claro."],
+    ["narr",  "Laura recupera su Micrófono. Estaba bajo la partitura, claro."],
   ],
 
   t3_intro: [
-    ["narr",  "La Huerta de Peñalén, donde será el convite, está patas arriba: anillos, tartas, copas, ramos, naranjas y corazones, todo revuelto."],
+    ["narr",  "Por fin la Huerta de Peñalén, donde será el convite. Toca la prueba de menú, y el catering lo ha dejado todo revuelto: anillos, tartas, copas, ramos, naranjas y corazones."],
     ["laura", "¡Pero si esto parece un mercadillo con prisa! Hay que agrupar: tres iguales y ¡pum!, desaparecen. ¡Match, match, match!"],
     ["pablo", "...Match."],
     ["laura", "¡Qué bonito oírtelo decir!"],
     ["pablo", "...Ya."],
   ],
   t3_win: [
-    ["laura", "¡La Invitación al convite! ¡Y el banquete está a punto! ¿Has visto cómo brillaba todo? ¡Y las naranjas! ¡Y la tarta! ¡Y esa cascada de siete combos que no ha visto nadie salvo yo!"],
-    ["pablo", "...Yo sabía que estaba debajo de la tarta."],
+    ["laura", "¡El menú definitivo! ¡Y el banquete está a punto! ¿Has visto cómo brillaba todo? ¡Y las naranjas! ¡Y la tarta! ¡Y esa cascada de siete combos que no ha visto nadie salvo yo!"],
+    ["pablo", "...Yo sabía que la tarta iba a ganar."],
   ],
 
   t4_intro: [
@@ -186,7 +194,7 @@ DIALOGS: {
 
   final_intro: [
     ["narr",  "Cuatro pruebas. Cuatro objetos. Un mapa que ya tiene todos sus colores."],
-    ["laura", "¡Lo tenemos todo! Pulsador, batuta, invitación, alianzas… ¡todo! ¡Y todavía {faltan}! ¡Pablo, vamos sobradísimos!"],
+    ["laura", "¡Lo tenemos todo! Pulsador, micrófono, menú, alianzas… ¡todo! ¡Y todavía {faltan}! ¡Pablo, vamos sobradísimos!"],
     ["pablo", "...Ya veremos."],
     ["laura", "¡Eso es optimismo, {apodo}!"],
   ],
@@ -196,7 +204,7 @@ DIALOGS: {
 TRIALS: [
   { id: "trivia", number: 1, name: "El concurso",              place: "Plató de televisión",          from: "intro",  intro: "t1_intro", win: "t1_win" },
   { id: "choir",  number: 2, name: "Ensayo del coro Betsaida", place: "Teatro del coro",              intro: "t2_intro", win: "t2_win" },
-  { id: "match3", number: 3, name: "Huerta de Peñalén",        place: "Preparando el convite",        intro: "t3_intro", win: "t3_win" },
+  { id: "match3", number: 3, name: "Prueba de menú",            place: "Huerta de Peñalén",        intro: "t3_intro", win: "t3_win" },
   { id: "battle", number: 4, name: "Camino a San José Obrero", place: "El último tramo",              intro: "t4_intro", win: "t4_win" },
 ],
 
@@ -349,7 +357,7 @@ TEXT: {
     GOAL: "Objetivo",
     SHUFFLE: "¡Sin movimientos! Barajando el tablero…",
     COMBO: ["¡Dulce!", "¡Delicioso!", "¡Espectacular!", "¡Banquete real!", "¡Match de boda!"],
-    WIN: "¡Convite preparado!",
+    WIN: "¡Menú aprobado!",
     LOSE: "Se acabaron los movimientos…",
     HINT: "Intercambia dos fichas contiguas para juntar tres o más iguales.",
     TILES: ["Anillo", "Tarta", "Copa", "Ramo", "Naranja", "Corazón"],

@@ -41,6 +41,7 @@
         onclick: async () => { if (await QM.ui.confirm(C().UI.RESTART_CONFIRM)) { QM.save.reset(); flow.title(); } } }));
       const el = h("section", { class: "title-screen" },
         h("div", { class: "title-bg", "aria-hidden": "true" }, [1, 2, 3, 4, 5, 6].map((n) => h("i", { class: "tbg tbg" + n }))),
+        QM.snow(),
         h("div", { class: "title-card" },
           h("h1", { class: "logo" }, h("span", { text: "Queda" }), " ", h("span", { text: "un mes" })),
           h("p", { class: "subtitle", text: G.SUBTITLE }),

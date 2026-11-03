@@ -19,7 +19,7 @@
   ];
   const START_L = [N.castellon, { x: 26, y: 32 }, { x: 32, y: 43 }, { x: 36, y: 53 }, N.t1];
   const START_P = [N.albal, { x: 25, y: 97 }, { x: 31, y: 88 }, { x: 35, y: 76 }, N.t1];
-  const TILE_COLORS = ["#ff6b9d", "#ffd166", "#2ec4b6", "#7b9cff", "#ff9f1c"];
+  const TILE_COLORS = ["#d62839", "#2f9e5b", "#ffd166", "#ffffff", "#0f5132"];
 
   function densify(pts, step) {
     const seg = []; let total = 0;
@@ -59,7 +59,7 @@
   const pine = (x, y) => `<path d="M${x} ${y - 6}L${x + 3} ${y}L${x - 3} ${y}z" fill="#2f8a4f" stroke="#2a2140" stroke-width=".4"/><path d="M${x} ${y - 9}L${x + 2.4} ${y - 4}L${x - 2.4} ${y - 4}z" fill="#3ea661" stroke="#2a2140" stroke-width=".4"/><rect x="${x - .5}" y="${y}" width="1" height="2" fill="#6b4423"/>`;
 
   const ART_BASE = `
-    <defs><linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#cfe8a9"/><stop offset="1" stop-color="#a9d58a"/></linearGradient>
+    <defs><linearGradient id="land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8f3e0"/><stop offset="1" stop-color="#9fd0a4"/></linearGradient>
     <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7fc8f0"/><stop offset="1" stop-color="#4aa3e0"/></linearGradient></defs>
     <rect width="100" height="120" fill="url(#land)"/>
     <path d="M91 0C87 14 95 24 90 38C85 52 94 66 90 82C87 96 94 108 91 120L100 120L100 0z" fill="url(#sea)"/>
@@ -68,8 +68,8 @@
     <g fill="#fff" opacity=".7"><path d="M94 20q2-2 4 0q2 2 4 0"/><path d="M93 70q2-2 4 0q2 2 4 0"/><path d="M95 98q2-2 4 0"/></g>`;
 
   const ART_R1 = `
-    ${house(8, 14, "#e85d75")}${house(16, 11, "#f4a261")}${house(21, 16, "#e85d75")}
-    ${house(8, 100, "#7b9cff")}${house(16, 104, "#2ec4b6")}${house(21, 99, "#7b9cff")}
+    ${house(8, 14, "#c1121f")}${house(16, 11, "#2f9e5b")}${house(21, 16, "#c1121f")}
+    ${house(8, 100, "#2f9e5b")}${house(16, 104, "#2f9e5b")}${house(21, 99, "#2f9e5b")}
     <rect x="26" y="44" width="22" height="13" rx="1" fill="#2d2a55" stroke="#2a2140" stroke-width=".6"/>
     <rect x="28" y="46" width="12" height="9" rx=".8" fill="#9fe7ff"/><path d="M34 47.5l1.4 2.9 3.1.4-2.3 2.1.6 3.1-2.8-1.6-2.8 1.6.6-3.1-2.3-2.1 3.1-.4z" fill="#ffd23f" stroke="#2a2140" stroke-width=".3"/>
     <rect x="42" y="47" width="4" height="2" fill="#ff4d6d"/><rect x="42" y="51" width="4" height="2" fill="#ffd23f"/>
@@ -77,11 +77,11 @@
     <path d="M18 54l8-8M54 54l-8-8" stroke="#ffe27a" stroke-width="1.4" opacity=".7"/>`;
   const ART_R2 = `
     <rect x="56" y="64" width="22" height="12" fill="#f3e9d7" stroke="#2a2140" stroke-width=".6"/>
-    <path d="M54 64L67 56L80 64z" fill="#9b5de5" stroke="#2a2140" stroke-width=".6"/>
+    <path d="M54 64L67 56L80 64z" fill="#c1121f" stroke="#2a2140" stroke-width=".6"/>
     ${[58, 63, 68, 73].map((x) => `<rect x="${x}" y="65" width="2" height="10" fill="#fff" stroke="#2a2140" stroke-width=".3"/>`).join("")}
     <path d="M58 65q4 5 4 9h-4zM76 65q-4 5-4 9h4z" fill="#d90429" opacity=".9"/>
     <circle cx="67" cy="60.5" r="2" fill="#ffd23f" stroke="#2a2140" stroke-width=".4"/>
-    <path d="M52 58v-6a2 2 0 1 0-2 2M52 58l0-6" fill="none" stroke="#2a2140" stroke-width=".8"/><ellipse cx="50" cy="55" rx="2" ry="1.5" fill="#9b5de5"/>`;
+    <path d="M52 58v-6a2 2 0 1 0-2 2M52 58l0-6" fill="none" stroke="#2a2140" stroke-width=".8"/><ellipse cx="50" cy="55" rx="2" ry="1.5" fill="#c1121f"/>`;
   const ART_R3 = `
     ${[0, 1, 2].map((r) => [0, 1, 2].map((c) => tree(68 + c * 7, 38 + r * 7, "#ff9f1c")).join("")).join("")}
     ${[0, 1, 2].map((r) => [0, 1, 2].map((c) => `<circle cx="${68.5 + c * 7}" cy="${37 + r * 7}" r=".8" fill="#2f8a4f"/>`).join("")).join("")}
@@ -95,8 +95,8 @@
     <rect x="78" y="-2" width="8" height="12" fill="#f3e9d7" stroke="#2a2140" stroke-width=".6"/><path d="M77 -2L82 -8L87 -2z" fill="#c8553d" stroke="#2a2140" stroke-width=".6"/>
     <path d="M82 -14v6M80 -12h4" stroke="#ffd23f" stroke-width="1.2"/>
     <rect x="80" y="12" width="4" height="6" rx="2" fill="#7a4a2b"/><rect x="74" y="10" width="2.4" height="4" fill="#6aa6d8"/><rect x="88" y="10" width="2.4" height="4" fill="#6aa6d8"/>
-    <path d="M62 18a10 10 0 0 1 18-9" fill="none" stroke="#ff6b9d" stroke-width="1.4"/><path d="M63 18a9 9 0 0 1 16-8" fill="none" stroke="#ffd166" stroke-width="1.4"/><path d="M64 18a8 8 0 0 1 14-7" fill="none" stroke="#2ec4b6" stroke-width="1.4"/>
-    ${[[66, 24], [70, 26], [90, 24], [94, 22]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="1.3" fill="${["#ff6b9d", "#ffd23f", "#c77dff", "#ff9f1c"][i]}"/>`).join("")}</g>`;
+    <path d="M62 18a10 10 0 0 1 18-9" fill="none" stroke="#c1121f" stroke-width="1.4"/><path d="M63 18a9 9 0 0 1 16-8" fill="none" stroke="#ffd166" stroke-width="1.4"/><path d="M64 18a8 8 0 0 1 14-7" fill="none" stroke="#2f9e5b" stroke-width="1.4"/>
+    ${[[66, 24], [70, 26], [90, 24], [94, 22]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="1.3" fill="${["#c1121f", "#ffd23f", "#2f9e5b", "#ffffff"][i]}"/>`).join("")}</g>`;
 
   QM.map = {
     NODES, N,

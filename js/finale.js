@@ -112,7 +112,6 @@
           mapCard),
         h("div", { class: "fin-right" },
           items,
-          h("div", { class: "card fin-card" }, h("p", { class: "dedic", text: QM.fmt(D.TEXT) }), h("p", { class: "sign", text: D.SIGNATURE })),
           h("div", { class: "card fin-card data-card" },
             h("h2", { text: TX.DATA_TITLE }),
             h("dl", null,
@@ -126,7 +125,7 @@
             if (await QM.ui.confirm(C().UI.RESTART_CONFIRM)) { QM.finale.stop(); QM.flow.restart(); }
           } })));
 
-      const root = h("section", { class: "finale" }, h("div", { class: "fin-bg", "aria-hidden": "true" }), cv, scroll);
+      const root = h("section", { class: "finale" }, h("div", { class: "fin-bg", "aria-hidden": "true" }), QM.snow(30), cv, scroll);
       QM.ui.show(root, "scr-finale");
       confetti(cv);
       QM.sfx("win");

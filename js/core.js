@@ -37,6 +37,7 @@
     return a;
   };
   QM.reduceMotion = !!(globalThis.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  QM.snow = (n) => { const d = h("div", { class: "snow", "aria-hidden": "true" }); for (let i = 0; i < (n || 24); i++) d.append(h("i", { style: `left:${(i * 37) % 100}%;animation-delay:${-(i * 7 % 9)}s;animation-duration:${7 + (i % 5)}s;width:${5 + i % 4 * 2}px;height:${5 + i % 4 * 2}px` })); return d; };
   QM.sfx = (n, a) => { try { QM.audio.sfx[n](a); } catch (e) { /* sin audio */ } };
 
   // --------------------------------------------------------- progreso guardado

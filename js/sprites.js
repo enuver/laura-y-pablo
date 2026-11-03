@@ -12,16 +12,16 @@
   const LOOKS = {
     laura: {
       skin: "#f3c9ac", hair: "#2a1a16", hairHi: "#4b2f27", lips: "#c9354b", blush: "#f19a9a",
-      top: "#ff5c93", top2: "#ffd23f", bottom: "#17b3a6", hem: "#ff9f1c", shoes: "#7b2cbf", earring: "#f2b134",
+      top: "#e8b04a", top2: "#fff1c9", bottom: "#1d1822", hem: "#1d1822", shoes: "#c9a77a", earring: "#f2b134", frameL: "#ff3d9a", frameR: "#19c3b5", frameT: "#ffd23f",
     },
     pablo: {
       skin: "#ebbf9f", hair: "#6b4125", hairHi: "#8a5a33", beard: "#b4562a", beardDk: "#8f3f1c",
-      frame: "#5a2f17", lens: "#dff3ff", jacket: "#5d84b0", jacketDk: "#41648a", collar: "#b08a62",
+      frame: "#d4b05a", lens: "#eaf8ff", jacket: "#5d84b0", jacketDk: "#41648a", collar: "#b08a62",
       collarHi: "#d3b48c", tee: "#22242d", pants: "#2c3a56", shoes: "#2a2a2f", teeth: "#fff6e8",
     },
     leire: {
       skin: "#efc1a1", hair: "#3a2218", hairHi: "#5a3a2b", lips: "#c0475a",
-      top: "#f4f1ea", stripe: "#1e2a5a", pants: "#3b5a8f", shoes: "#f4f1ea", lanyard: "#ff5fa2",
+      top: "#7c4dff", stripe: "#5b34d6", pants: "#1f2433", shoes: "#f4f1ea", lanyard: "#c9a6ff",
     },
     host: {
       skin: "#e6b08b", hair: "#1d1d26", hairHi: "#3a3a4a", suit: "#18b6c6", suitDk: "#0e8a97",
@@ -100,11 +100,11 @@
   function laura(R, o) {
     const L = LOOKS.laura, pose = o.pose;
     R(7, 6, 18, 26, L.hair);                                  // pelo largo (detrás)
-    R(12, 36, 3, 6, L.skin); R(17, 36, 3, 6, L.skin);        // piernas
-    R(11, 42, 4, 2, L.shoes); R(17, 42, 4, 2, L.shoes);
-    R(8, 30, 16, 6, L.bottom); R(8, 35, 16, 1, L.hem);       // falda
-    R(10, 31, 1, 4, "#0f8c82"); R(16, 31, 1, 4, "#0f8c82"); R(21, 31, 1, 4, "#0f8c82");
-    R(9, 21, 14, 10, L.top); R(9, 25, 14, 2, L.top2);        // top colorido
+    R(10, 34, 5, 8, L.bottom); R(17, 34, 5, 8, L.bottom);    // pantalón ancho negro
+    R(10, 42, 5, 2, L.shoes); R(17, 42, 5, 2, L.shoes);      // sandalias
+    R(8, 29, 16, 7, L.bottom);
+    [[10, 31], [18, 32], [14, 35], [20, 37], [11, 39], [18, 40]].forEach(([x, y]) => { R(x, y, 2, 2, "#fff"); R(x, y, 1, 1, "#ffd23f"); }); // margaritas
+    R(9, 21, 14, 10, L.top); for (let y = 22; y < 31; y += 3) R(9, y, 14, 1, L.top2); for (let x = 11; x < 23; x += 4) R(x, 21, 1, 10, L.top2); // camisa de cuadros
     R(14, 19, 4, 3, L.skin);
     R(8, 24, 2, 8, L.hair); R(22, 24, 2, 8, L.hair);         // mechones sobre los hombros
     arms(R, pose, L.top, L.skin, 5);
@@ -115,7 +115,9 @@
     R(8, 8, 2, 12, L.hair); R(22, 8, 2, 12, L.hair);
     R(12, 3, 5, 1, L.hairHi); R(10, 5, 2, 1, L.hairHi);
     R(8, 16, 2, 2, L.earring); R(22, 16, 2, 2, L.earring);   // pendientes cuadrados
-    eyes(R, pose, 12);
+    // gafas de colorines
+    R(10, 10, 6, 5, L.frameL); R(17, 10, 6, 5, L.frameR); R(16, 10, 1, 1, L.frameT); R(11, 11, 4, 3, "#fff6e0"); R(18, 11, 4, 3, "#fff6e0"); R(9, 11, 1, 1, L.frameT); R(23, 11, 1, 1, L.frameT);
+    eyes(R, pose, 12, INK, true);
     R(10, 15, 2, 1, L.blush); R(20, 15, 2, 1, L.blush);
     mouth(R, pose, L.lips, null);
     if (pose === "idle" || pose === "think") { R(14, 16, 4, 1, L.lips); }
@@ -151,11 +153,12 @@
   function leire(R, o) {
     const L = LOOKS.leire, pose = o.pose;
     legs(R, L.pants, L.shoes, 33);
-    R(9, 21, 14, 12, L.top);                                 // camiseta de rayas
-    for (let y = 22; y < 33; y += 4) R(9, y, 14, 2, L.stripe);
+    R(9, 21, 14, 12, L.top);                                 // camiseta morada (guiño a BTS)
+    R(9, 31, 14, 2, L.stripe);
+    R(12, 24, 3, 2, "#fff"); R(17, 24, 3, 2, "#fff"); R(12, 26, 8, 2, "#fff"); R(13, 28, 6, 1, "#fff"); R(15, 29, 2, 1, "#fff"); // corazón
     R(14, 19, 4, 3, L.skin);
-    R(10, 22, 2, 9, "#23202e"); R(20, 22, 2, 9, "#23202e");   // tirantes de mochila
-    R(15, 21, 2, 7, L.lanyard); R(15, 28, 2, 2, "#e8e8e8");   // cordón rosa
+    R(12, 0, 8, 1, "#c9a6ff");                              // cinta morada en el pelo
+    R(15, 21, 2, 3, L.lanyard);
     arms(R, pose, L.top, L.skin, 5);
     R(10, 6, 12, 14, L.skin); R(9, 8, 14, 10, L.skin);
     R(8, 11, 1, 3, L.skin); R(23, 11, 1, 3, L.skin);
@@ -191,7 +194,8 @@
 
   function drawProp(R, who, o) {
     if (o.prop === "baton") {
-      R(26, 0, 1, 10, "#fff7e6"); R(26, 0, 1, 2, "#ffd23f"); R(25, 9, 3, 2, "#8a5a33");
+      R(25, 1, 4, 5, "#cfcfcf"); R(25, 1, 4, 1, "#fff"); R(26, 6, 2, 3, "#555");
+    } else if (o.prop === "unused") {
     } else if (o.prop === "mic") {
       R(27, 20, 2, 6, "#777"); R(26, 17, 4, 4, "#cfcfcf"); R(27, 18, 2, 1, "#fff");
     }
@@ -265,16 +269,18 @@
       R(5, 3, 6, 1, "#ff9fb0"); R(4, 4, 8, 1, "#ff4d6d"); R(3, 5, 10, 5, "#e5173f"); R(4, 5, 3, 2, "#ff9fb0"); R(3, 9, 10, 1, "#a30f2d");
       R(0, 2, 2, 1, "#ffd23f"); R(14, 2, 2, 1, "#ffd23f"); R(7, 0, 2, 2, "#ffd23f"); R(1, 6, 1, 2, "#ffd23f"); R(14, 6, 1, 2, "#ffd23f");
     },
-    batuta(R) {
-      for (let i = 0; i < 12; i++) { R(3 + i, 12 - i, 2, 2, "#fff7e6"); R(3 + i, 13 - i, 1, 1, "#cdbf9d"); }
-      R(1, 12, 4, 4, "#8a5a33"); R(2, 12, 2, 1, "#c08a4d"); R(4, 10, 2, 2, "#ffd23f");
-      R(13, 0, 3, 3, "#ffd23f"); R(14, 0, 1, 1, "#fff"); R(12, 3, 1, 1, "#ffd23f"); R(15, 3, 1, 1, "#ffd23f");
+    microfono(R) {
+      R(5, 1, 7, 7, INK); R(6, 2, 5, 5, "#cfd6e4"); R(7, 2, 2, 2, "#fff");
+      for (let i = 0; i < 6; i++) { R(6 + i, 3 + (i % 2) * 2, 1, 1, "#8b94a8"); }
+      R(7, 8, 3, 2, INK); R(8, 8, 1, 1, "#ffd23f");
+      for (let i = 0; i < 6; i++) { R(7 + (i >> 2), 9 + i, 3, 1, INK); R(8 + (i >> 2), 9 + i, 1, 1, "#4a4560"); }
+      R(1, 1, 1, 3, "#ffd23f"); R(0, 2, 3, 1, "#ffd23f"); R(14, 4, 1, 3, "#ffd23f"); R(13, 5, 3, 1, "#ffd23f");
     },
-    invitacion(R) {
-      R(1, 4, 14, 10, INK); R(2, 5, 12, 8, "#fff7e6");
-      for (let i = 0; i < 6; i++) { R(2 + i, 5 + i, 1, 1, "#cdbf9d"); R(13 - i, 5 + i, 1, 1, "#cdbf9d"); }
-      R(6, 8, 2, 1, "#e5173f"); R(9, 8, 2, 1, "#e5173f"); R(6, 9, 5, 1, "#e5173f"); R(7, 10, 3, 1, "#e5173f"); R(8, 11, 1, 1, "#e5173f");
-      R(1, 2, 2, 1, "#ffd23f"); R(13, 1, 2, 2, "#ffd23f");
+    menu(R) {
+      R(2, 1, 12, 14, INK); R(3, 2, 10, 12, "#fff7e6"); R(3, 2, 10, 1, "#c1121f");
+      R(5, 4, 6, 1, "#8a5a33"); R(4, 6, 8, 1, "#c9b99a"); R(4, 8, 8, 1, "#c9b99a"); R(4, 10, 8, 1, "#c9b99a");
+      R(10, 11, 2, 2, "#2f8a4f"); R(11, 10, 1, 1, "#c1121f"); R(5, 12, 3, 1, "#c9b99a");
+      R(0, 0, 1, 3, "#ffd23f"); R(14, 12, 2, 1, "#ffd23f");
     },
     alianzas(R) {
       ring(R, 5, 10, 1.7, 5.2, INK); ring(R, 5, 10, 2.5, 4.3, "#ffc933"); R(3, 7, 2, 1, "#fff3b0"); R(2, 9, 1, 2, "#fff3b0");
@@ -282,7 +288,7 @@
       R(13, 12, 1, 3, "#ffd23f"); R(12, 13, 3, 1, "#ffd23f"); R(1, 1, 1, 3, "#ffd23f"); R(0, 2, 3, 1, "#ffd23f");
     },
   };
-  S.itemIds = ["pulsador", "batuta", "invitacion", "alianzas"];
+  S.itemIds = ["pulsador", "microfono", "menu", "alianzas"];
   S.item = function (idOrIdx, locked) {
     const id = typeof idOrIdx === "number" ? S.itemIds[idOrIdx] : idOrIdx;
     const cv = mk(16, 16, "spr-item");

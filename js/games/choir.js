@@ -8,10 +8,10 @@
 
   // Do–Mi–Sol–Do agudo: un acorde mayor que suena bien aunque se pulse a lo loco.
   const VOICES = [
-    { id: 0, note: "C5", name: "Soprano",   shape: "circle",   pos: "top",    color: "#ffd23f", dark: "#a67c00", key: "ArrowUp",    label: "Do agudo" },
-    { id: 1, note: "G4", name: "Contralto", shape: "square",   pos: "right",  color: "#ff5c93", dark: "#a8174a", key: "ArrowRight", label: "Sol" },
-    { id: 2, note: "E4", name: "Tenor",     shape: "triangle", pos: "bottom", color: "#2ec4b6", dark: "#0b7a70", key: "ArrowDown",  label: "Mi" },
-    { id: 3, note: "C4", name: "Bajo",      shape: "diamond",  pos: "left",   color: "#8f7bff", dark: "#3d2bb5", key: "ArrowLeft",  label: "Do" },
+    { id: 0, note: "C5", name: "Altas",   shape: "circle",   pos: "top",    color: "#ffd23f", dark: "#a67c00", key: "ArrowUp",    label: "Do agudo" },
+    { id: 1, note: "G4", name: "Medias",  shape: "square",   pos: "right",  color: "#ff4d5e", dark: "#9d1020", key: "ArrowRight", label: "Sol" },
+    { id: 2, note: "E4", name: "Chicos",  shape: "triangle", pos: "bottom", color: "#3ddc84", dark: "#0d7a3d", key: "ArrowDown",  label: "Mi" },
+    { id: 3, note: "C4", name: "Músicos", shape: "diamond",  pos: "left",   color: "#e8f1ff", dark: "#5d6b88", key: "ArrowLeft",  label: "Do · guitarra y percusión" },
   ];
   const SHAPES = {
     circle: '<circle cx="50" cy="50" r="34" />',
