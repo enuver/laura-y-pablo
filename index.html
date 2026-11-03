@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Queda un mes</title>
+  <meta name="description" content="Queda un mes: un pequeño juego de boda para Laura y Pablo.">
+  <!-- Pide a los buscadores que no lo muestren. No lo hace secreto: quien tenga el enlace puede entrar. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="theme-color" content="#120a2e">
+  <meta property="og:title" content="Queda un mes">
+  <meta property="og:description" content="Un pequeño juego de boda para Laura y Pablo. ¡Cuatro pruebas, cuatro objetos y una boda!">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23251d45'/%3E%3Cpath d='M16 26C7 19 5 14 7 10c2-4 7-3 9 1c2-4 7-5 9-1c2 4 0 9-9 16z' fill='%23ff5c93'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header id="hud">
+      <div id="hud-items" class="hud-items" role="group" aria-label="Objetos conseguidos"></div>
+      <span class="hud-spacer"></span>
+      <button id="btn-mute" class="icon-btn" type="button"></button>
+      <button id="btn-menu" class="icon-btn" type="button"></button>
+    </header>
+    <main id="screen"></main>
+
+    <div id="dialog" class="dlg" hidden>
+      <div class="dlg-wrap">
+        <button class="btn btn-small dlg-skip" type="button"></button>
+        <div class="dlg-box" role="group" aria-label="Diálogo">
+          <div class="dlg-portrait" aria-hidden="true"></div>
+          <div class="dlg-main">
+            <div class="dlg-name"></div>
+            <p class="dlg-text" aria-hidden="true"></p>
+          </div>
+          <span class="dlg-next" aria-hidden="true">toca para seguir ▶</span>
+        </div>
+      </div>
+    </div>
+    <div id="dlg-live" class="sr-only" aria-live="polite"></div>
+
+    <div id="modal" class="modal" hidden></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <noscript><p style="padding:24px;font:18px sans-serif">Este juego necesita JavaScript activado en el navegador.</p></noscript>
+
+  <script src="content.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/core.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/games/trivia.js"></script>
+  <script src="js/games/choir.js"></script>
+  <script src="js/games/match3-logic.js"></script>
+  <script src="js/games/match3.js"></script>
+  <script src="js/games/battle-logic.js"></script>
+  <script src="js/games/battle.js"></script>
+  <script src="js/finale.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
