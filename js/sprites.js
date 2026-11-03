@@ -269,6 +269,12 @@
       R(5, 3, 6, 1, "#ff9fb0"); R(4, 4, 8, 1, "#ff4d6d"); R(3, 5, 10, 5, "#e5173f"); R(4, 5, 3, 2, "#ff9fb0"); R(3, 9, 10, 1, "#a30f2d");
       R(0, 2, 2, 1, "#ffd23f"); R(14, 2, 2, 1, "#ffd23f"); R(7, 0, 2, 2, "#ffd23f"); R(1, 6, 1, 2, "#ffd23f"); R(14, 6, 1, 2, "#ffd23f");
     },
+    invitacion(R) {
+      R(1, 4, 14, 10, INK); R(2, 5, 12, 8, "#fff7e6");
+      for (let i = 0; i < 6; i++) { R(2 + i, 5 + i, 1, 1, "#cdbf9d"); R(13 - i, 5 + i, 1, 1, "#cdbf9d"); }
+      R(6, 8, 2, 1, "#c1121f"); R(9, 8, 2, 1, "#c1121f"); R(6, 9, 5, 1, "#c1121f"); R(7, 10, 3, 1, "#c1121f"); R(8, 11, 1, 1, "#c1121f");
+      R(1, 2, 2, 1, "#ffd23f"); R(13, 1, 2, 2, "#ffd23f");
+    },
     microfono(R) {
       R(5, 1, 7, 7, INK); R(6, 2, 5, 5, "#cfd6e4"); R(7, 2, 2, 2, "#fff");
       for (let i = 0; i < 6; i++) { R(6 + i, 3 + (i % 2) * 2, 1, 1, "#8b94a8"); }
@@ -288,7 +294,7 @@
       R(13, 12, 1, 3, "#ffd23f"); R(12, 13, 3, 1, "#ffd23f"); R(1, 1, 1, 3, "#ffd23f"); R(0, 2, 3, 1, "#ffd23f");
     },
   };
-  S.itemIds = ["pulsador", "microfono", "menu", "alianzas"];
+  S.itemIds = ["invitacion", "microfono", "menu", "alianzas"];
   S.item = function (idOrIdx, locked) {
     const id = typeof idOrIdx === "number" ? S.itemIds[idOrIdx] : idOrIdx;
     const cv = mk(16, 16, "spr-item");

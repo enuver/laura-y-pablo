@@ -65,7 +65,7 @@ DEDICATION: {
 
 /* ---------------------------------------------------------------- OBJETOS */
 ITEMS: [
-  { id: "pulsador",   name: "El Pulsador del concurso", desc: "Sirve para… bueno, nadie sabe para qué lo queremos." },
+  { id: "invitacion", name: "La Invitación",           desc: "La dejó Laura en el plató el otro día. ¡Menos mal que alguien la guardó!" },
   { id: "microfono",  name: "El Micrófono de Laura",    desc: "Con él, hasta el caos suena afinado." },
   { id: "menu",        name: "El Menú definitivo",       desc: "Aprobado por todos, hasta por los cuñados." },
   { id: "alianzas",   name: "Las Alianzas",             desc: "Dos aros, una promesa. Ya sí: no falta nada." },
@@ -106,7 +106,7 @@ DIALOGS: {
 
   intro: [
     ["narr",  "Queda un mes para la boda de Laura y Pablo. Y, como en toda boda que se precie, falta justo lo más importante."],
-    ["laura", "¡{apodo}! ¡{apodo}, mírame! Que he hecho la lista, y he repasado la lista, y luego he repasado la lista de la lista, y resulta que faltan cuatro cosas: el pulsador, el micrófono, el menú definitivo y… ¡las alianzas! ¡Las alianzas, Pablo! Que las tenía en la mano hace un momento y ahora no sé si las he guardado en el bolso, en el otro bolso o en el microondas. No me mires así. ¿Por qué me miras así? ¿Estoy hablando mucho? Dime algo."],
+    ["laura", "¡{apodo}! ¡{apodo}, mírame! Que he hecho la lista, y he repasado la lista, y luego he repasado la lista de la lista, y resulta que faltan cuatro cosas: la invitación, el micrófono, el menú definitivo y… ¡las alianzas! ¡Las alianzas, Pablo! Que las tenía en la mano hace un momento y ahora no sé si las he guardado en el bolso, en el otro bolso o en el microondas. No me mires así. ¿Por qué me miras así? ¿Estoy hablando mucho? Dime algo."],
     ["pablo", "..."],
     ["laura", "Eso es un «vamos a por ellas», ¿verdad?"],
     ["pablo", "...Sí."],
@@ -122,7 +122,7 @@ DIALOGS: {
     ["host",  "¡Bienvenidos, bienvenidos, bienvenidos! Soy Eugeni Alemany. Hoy tenemos el plató a reventar: tres focos, un ficus y vosotros dos."],
     ["host",  "Me cuentan que Laura ya ha pisado más de un concurso, así que los nervios del pulsador no tendrán secretos para ella. ¿Y Pablo? ¿Pablo?"],
     ["pablo", "..."],
-    ["host",  "Perfecto: hombre de pocas palabras. Reglas: seis categorías, una medalla por categoría, dos aciertos por medalla. Con cinco fallos se apagan los focos. ¡Y el premio es un Pulsador!"],
+    ["host",  "Perfecto: hombre de pocas palabras. Reglas: seis categorías, una medalla por categoría, dos aciertos por medalla. Con cinco fallos se apagan los focos. ¡Y hay premio sorpresa!"],
     ["laura", "¡Yo me sé todas! Bueno, todas no, pero sé las que sé y las que no sé las sé a medias, que es casi saberlas, y además tengo experiencia, que lo ha dicho él, y ¡{apodo} sabe un montón de cosas aunque no las diga!"],
     ["pablo", "...Vamos."],
   ],
@@ -130,10 +130,9 @@ DIALOGS: {
     ["host",  "¡Seis medallas! ¡Aplausos enlatados, por favor!"],
     ["laura", "¡Lo hemos conseguido! ¡Pablo, has estado ahí, con tu cara de póker, aportando serenidad mientras yo gritaba las respuestas antes de que acabara la pregunta!"],
     ["pablo", "...Gracias."],
-    ["host",  "Aquí tenéis vuestro premio: el Pulsador del concurso. Úsalo con responsabilidad."],
-    ["laura", "¡Un pulsador! Y... ¿esto para qué lo queremos?"],
-    ["pablo", "...No sé."],
-    ["laura", "¡Ni yo! ¡Pero mola un montón!"],
+    ["host",  "Y ahora, el premio: ¿esto es vuestro? Laura, lo dejaste aquí el otro día. Es una invitación."],
+    ["laura", "¡LA INVITACIÓN! ¡La estaba buscando por todas partes! ¡Pensé que estaba en el bolso, o en el otro bolso, o en el microondas! ¡Gracias, gracias, gracias!"],
+    ["pablo", "...Menos mal."],
     ["narr",  "Se subieron al coche. Esta vez, Pablo llevaba el mapa."],
   ],
 
@@ -194,7 +193,7 @@ DIALOGS: {
 
   final_intro: [
     ["narr",  "Cuatro pruebas. Cuatro objetos. Un mapa que ya tiene todos sus colores."],
-    ["laura", "¡Lo tenemos todo! Pulsador, micrófono, menú, alianzas… ¡todo! ¡Y todavía {faltan}! ¡Pablo, vamos sobradísimos!"],
+    ["laura", "¡Lo tenemos todo! Invitación, micrófono, menú, alianzas… ¡todo! ¡Y todavía {faltan}! ¡Pablo, vamos sobradísimos!"],
     ["pablo", "...Ya veremos."],
     ["laura", "¡Eso es optimismo, {apodo}!"],
   ],
