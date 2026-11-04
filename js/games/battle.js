@@ -12,7 +12,7 @@
     attempt(ctx) {
       return new Promise((resolve) => {
         const TX = C().TEXT.BATTLE, CFG = C().BALANCE.BATTLE;
-        const s = L().begin(L().create({ help: ctx.help }));
+        const s = L().begin(L().create({ help: ctx.help, cfg: QM.applyMods(C().BALANCE.BATTLE, ctx.mods) }));
         const NAME = (w) => C().NAMES[w];
         let busy = true, over = false, frame = 0, chooser = null;
         const shown = { laura: { hp: s.heroes.laura.hp, ko: false }, pablo: { hp: s.heroes.pablo.hp, ko: false }, enemy: { hp: s.enemy.hp } };

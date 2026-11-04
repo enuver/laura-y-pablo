@@ -42,8 +42,8 @@
       return new Promise((resolve) => {
         const TX = C().TEXT.MATCH3;
         const B = C().BALANCE.MATCH3;
-        const moves0 = B.MOVES + (ctx.help ? B.HELP.EXTRA_MOVES : 0);
-        const goal = Math.round(B.GOAL * (ctx.help ? B.HELP.GOAL_FACTOR : 1));
+        const mm = QM.applyMods({ MOVES: B.MOVES + (ctx.help ? B.HELP.EXTRA_MOVES : 0), GOAL: Math.round(B.GOAL * (ctx.help ? B.HELP.GOAL_FACTOR : 1)) }, ctx.mods);
+        const moves0 = mm.MOVES, goal = mm.GOAL;
         const rng = Math.random;
         const board = L().newBoard(rng);
         let moves = moves0, score = 0, busy = true, sel = null, finished = false, hintT = null;

@@ -63,6 +63,61 @@ DEDICATION: {
   SIGNATURE: "Con muchísimo cariño, vuestros amigos",   // TODO: firma
 },
 
+/* ------------------------------------------------------------- DIFICULTAD
+   Se elige al empezar. Si una prueba se resiste, se recomienda bajar a
+   «Coro vocal», pero solo para esa prueba. */
+DIFFICULTY: {
+  TITLE: "Elige la dificultad",
+  LEVELS: {
+    easy:     { name: "Coro vocal", desc: "Fácil. Más tiempo, más margen y menos castigo. Para disfrutar de la historia." },
+    standard: { name: "Estándar",   desc: "Media-alta. El reto pensado para quien está acostumbrado a este tipo de juegos." },
+    chaos:    { name: "Modo caos",  desc: "Cada intento llega con dos cambios al azar (a favor o en contra), así que cada partida es distinta." },
+  },
+  SWITCH: "Cambiar dificultad",
+  LABEL: "Dificultad",
+  HELP_BTN: "Bajar a Coro vocal (solo en esta prueba)",
+  RECOMMEND: "Esta prueba se resiste. Te recomendamos bajar a «Coro vocal» solo para esta prueba (en la siguiente volverás a tu dificultad), o seguir adelante sin superarla: el objeto es vuestro igualmente.",
+  RECOMMEND_EASY: "Esta prueba se resiste incluso en «Coro vocal». Puedes seguir adelante sin superarla: el objeto es vuestro igualmente.",
+  CHAOS_TITLE: "Modo caos: ¡dos cambios!",
+  CHAOS_GO: "¡Vamos!",
+},
+
+/* Cambios al azar del modo caos. Cada intento se eligen 2 de grupos distintos.
+   mul = multiplica el valor de BALANCE · add = suma. */
+CHAOS_MODS: {
+  trivia: [
+    { group: "time",   name: "Cronómetro nervioso: menos tiempo por pregunta", mul: { SECONDS_PER_QUESTION: 0.6 } },
+    { group: "time",   name: "Plató tranquilo: más tiempo por pregunta", mul: { SECONDS_PER_QUESTION: 1.5 } },
+    { group: "strikes", name: "Jurado estricto: solo 3 fallos", add: { MAX_STRIKES: -2 } },
+    { group: "strikes", name: "Público generoso: 2 fallos más", add: { MAX_STRIKES: 2 } },
+    { group: "need",   name: "Medalla de oro: un acierto más por categoría", add: { CORRECT_PER_MEDAL: 1 } },
+    { group: "lifelines", name: "Comodines de regalo: +2", add: { LIFELINES: 2 } },
+    { group: "lifelines", name: "Sin comodines", mul: { LIFELINES: 0 } },
+  ],
+  choir: [
+    { group: "speed",  name: "Ritmo frenético", mul: { START_MS: 0.75, MIN_MS: 0.8 } },
+    { group: "speed",  name: "Ritmo tranquilo", mul: { START_MS: 1.25, MIN_MS: 1.2 } },
+    { group: "length", name: "Repertorio largo: +3 notas de meta", add: { TARGET_LENGTH: 3 } },
+    { group: "length", name: "Repertorio corto: 3 notas menos", add: { TARGET_LENGTH: -3 } },
+  ],
+  match3: [
+    { group: "moves", name: "Prisas: 4 movimientos menos", add: { MOVES: -4 } },
+    { group: "moves", name: "Tiempo extra: 4 movimientos más", add: { MOVES: 4 } },
+    { group: "goal",  name: "Menú ambicioso: un 20 % más de puntos", mul: { GOAL: 1.2 } },
+    { group: "goal",  name: "Menú sencillo: un 20 % menos de puntos", mul: { GOAL: 0.8 } },
+  ],
+  battle: [
+    { group: "enemy",  name: "Caos reforzado: más vida", mul: { ENEMY_HP: 1.25 } },
+    { group: "enemy",  name: "Caos cansado: menos vida", mul: { ENEMY_HP: 0.8 } },
+    { group: "clumsy", name: "Laura más torpe de lo normal", mul: { CLUMSY_CHANCE: 1.8 } },
+    { group: "clumsy", name: "Laura con día de gracia: sin torpezas", mul: { CLUMSY_CHANCE: 0 } },
+    { group: "heroes", name: "Equipo resfriado: menos vida", mul: { LAURA_HP: 0.8, PABLO_HP: 0.8 } },
+    { group: "heroes", name: "Equipo descansado: más vida", mul: { LAURA_HP: 1.25, PABLO_HP: 1.25 } },
+    { group: "damage", name: "Caos con cafeína: ataques más fuertes", mul: { ATTACKS_DMG: 1.25 } },
+    { group: "damage", name: "Caos desganado: ataques más flojos", mul: { ATTACKS_DMG: 0.8 } },
+  ],
+},
+
 /* ---------------------------------------------------------------- OBJETOS */
 ITEMS: [
   { id: "invitacion", name: "La Invitación",           desc: "La dejó Laura en el plató el otro día. ¡Menos mal que alguien la guardó!" },

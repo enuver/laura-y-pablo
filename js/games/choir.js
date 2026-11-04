@@ -27,7 +27,7 @@
     attempt(ctx) {
       return new Promise((resolve) => {
         const TX = C().TEXT.CHOIR;
-        const bal = Object.assign({}, C().BALANCE.CHOIR, ctx.help ? C().BALANCE.CHOIR.HELP : {});
+        const bal = QM.applyMods(Object.assign({}, C().BALANCE.CHOIR, ctx.help ? C().BALANCE.CHOIR.HELP : {}), ctx.mods);
         let seq = [], step = 0, playing = false, finished = false, accepting = false, round = 0;
 
         const stage = h("section", { class: "stage" });

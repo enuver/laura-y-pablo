@@ -42,7 +42,7 @@
 
   // --------------------------------------------------------- progreso guardado
   const KEY = "queda-un-mes-v1";
-  const DEFAULT = () => ({ v: 1, items: [false, false, false, false], fails: [0, 0, 0, 0], skipped: [false, false, false, false], helped: [false, false, false, false], seen: [false, false, false, false], muted: false, introSeen: false });
+  const DEFAULT = () => ({ v: 1, items: [false, false, false, false], fails: [0, 0, 0, 0], skipped: [false, false, false, false], helped: [false, false, false, false], seen: [false, false, false, false], muted: false, introSeen: false, difficulty: "standard" });
   QM.state = DEFAULT();
   QM.save = {
     load() { try { const s = localStorage.getItem(KEY); if (s) QM.state = Object.assign(DEFAULT(), JSON.parse(s)); } catch (e) { /* sin localStorage */ } },
@@ -98,6 +98,30 @@
       .replace(/\{apodo\}/g, C().NICKNAME_PABLO)
       .replace(/\{faltan\}/g, QM.time.text())
       .replace(/\{who\}/g, "");
+  };
+
+  // ------------------------------------------------------ dificultad / modo caos
+  QM.applyMods = function (base, mods) {
+    const out = Object.assign({}, base);
+    (mods || []).forEach((m) => {
+      const set = (k, f) => {
+        if (k === "ATTACKS_DMG") { out.ATTACKS = out.ATTACKS.map((a) => Object.assign({}, a, { dmg: Math.max(1, Math.round(f(a.dmg))) })); return; }
+        if (typeof out[k] !== "number") return;
+        const b = out[k]; let v = f(b);
+        if (Number.isInteger(b)) { v = Math.round(v); if (b > 0 && v < 1 && !(m.mul && m.mul[k] === 0)) v = 1; if (v < 0) v = 0; }
+        out[k] = v;
+      };
+      Object.keys(m.mul || {}).forEach((k) => set(k, (x) => x * m.mul[k]));
+      Object.keys(m.add || {}).forEach((k) => set(k, (x) => x + m.add[k]));
+    });
+    return out;
+  };
+  QM.chaosPick = function (game) {
+    const pool = (C().CHAOS_MODS[game] || []).slice();
+    QM.shuffle(pool);
+    const out = [];
+    pool.forEach((m) => { if (out.length < 2 && !out.some((o) => o.group === m.group)) out.push(m); });
+    return out;
   };
 
   // ------------------------------------------------------------------ sonido
@@ -260,9 +284,11 @@
   UI.menu = async function () {
     const buttons = [{ id: "close", label: "Seguir jugando", primary: true }];
     if (UI.canQuit && UI.canQuit()) buttons.push({ id: "quit", label: C().UI.BACK_TO_MAP });
+    else buttons.push({ id: "diff", label: C().DIFFICULTY.SWITCH });
     buttons.push({ id: "restart", label: C().GAME.NEW_GAME });
     const r = await UI.modal({ title: C().UI.MENU, buttons, cancel: "close" });
     if (r === "quit") UI.doQuit && UI.doQuit();
+    if (r === "diff") QM.flow.pickDifficulty(false);
     if (r === "restart" && (await UI.confirm(C().UI.RESTART_CONFIRM))) { QM.flow.restart(); }
   };
 
@@ -283,14 +309,16 @@
     const canHelp = fails >= B.HELP_AFTER_FAILS;
     const t = u.FAIL_TITLES[Math.min(fails - 1, u.FAIL_TITLES.length - 1)] || u.FAIL_TITLES[0];
     const buttons = [{ id: "retry", label: u.RETRY, primary: true }];
+    const canLower = canHelp && QM.state.difficulty !== "easy" && !QM.state.helped[idx];
     if (canHelp) {
-      buttons.push({ id: "help", label: u.HELP_BTN }, { id: "skip", label: u.SKIP_BTN });
+      if (canLower) buttons.push({ id: "help", label: C().DIFFICULTY.HELP_BTN });
+      buttons.push({ id: "skip", label: u.SKIP_BTN });
     }
     buttons.push({ id: "quit", label: u.BACK_TO_MAP, small: true });
     QM.sfx("lose");
     return UI.modal({
       title: extra && extra.title ? extra.title : t,
-      text: (extra && extra.text ? extra.text + " " : "") + (canHelp ? u.HELP_OFFER : QM.pick(u.FAIL_TEXTS)),
+      text: (extra && extra.text ? extra.text + " " : "") + (canHelp ? (canLower ? C().DIFFICULTY.RECOMMEND : C().DIFFICULTY.RECOMMEND_EASY) : QM.pick(u.FAIL_TEXTS)),
       node: h("p", { class: "fail-count", text: "Intentos fallidos: " + fails }),
       buttons,
     });

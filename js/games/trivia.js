@@ -28,7 +28,7 @@
     attempt(ctx) {
       return new Promise((resolve) => {
         const TX = C().TEXT.TRIVIA;
-        const bal = Object.assign({}, C().BALANCE.TRIVIA, ctx.help ? C().BALANCE.TRIVIA.HELP : {});
+        const bal = QM.applyMods(Object.assign({}, C().BALANCE.TRIVIA, ctx.help ? C().BALANCE.TRIVIA.HELP : {}), ctx.mods);
         const need = bal.CORRECT_PER_MEDAL;
         const got = {}; CATS.forEach((c) => (got[c] = 0));
         let strikes = 0, lifelines = bal.LIFELINES, tId = null, cur = null, locked = true, finished = false, llUsed = false, count = 0;

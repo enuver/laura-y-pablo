@@ -55,6 +55,7 @@
       try {
         QM.audio.music("map");
         if (!QM.state.introSeen) {
+          await this.pickDifficulty(true);
           this.showMap(0);
           await QM.ui.dialog("intro");
           QM.state.introSeen = true; QM.save.write();
@@ -63,6 +64,17 @@
           this.showMap(targetPos());
         }
       } finally { busy = false; }
+    },
+
+    async pickDifficulty(initial) {
+      const D = C().DIFFICULTY, keys = ["easy", "standard", "chaos"], cur = QM.state.difficulty;
+      const node = h("div", { class: "diff-list" }, keys.map((k) => h("p", null, h("b", { text: D.LEVELS[k].name + ": " }), D.LEVELS[k].desc)));
+      const r = await QM.ui.modal({ title: D.TITLE, node,
+        buttons: keys.map((k) => ({ id: k, label: D.LEVELS[k].name + (!initial && k === cur ? " ✓" : ""), primary: k === "standard" })),
+        cancel: initial ? undefined : cur });
+      QM.state.difficulty = r || cur; QM.save.write();
+      const lab = $(".ribbon-diff"); if (lab) lab.textContent = D.LABEL + ": " + D.LEVELS[QM.state.difficulty].name;
+      return QM.state.difficulty;
     },
 
     // ------------------------------------------------------------------- mapa
@@ -74,7 +86,8 @@
       const cta = h("button", { class: "btn btn-big map-cta", type: "button", onclick: () => this.onNode(QM.nextTrial() === -1 ? 4 : QM.nextTrial()) });
       const ribbon = h("div", { class: "map-ribbon" },
         h("span", { class: "ribbon-days", text: QM.time.text() }),
-        h("span", { class: "ribbon-hint", text: C().UI.MAP_HINT }));
+        h("span", { class: "ribbon-hint", text: C().UI.MAP_HINT }),
+        h("span", { class: "ribbon-hint ribbon-diff", text: C().DIFFICULTY.LABEL + ": " + C().DIFFICULTY.LEVELS[QM.state.difficulty].name }));
       const el = h("section", { class: "map-screen" },
         h("div", { class: "board-holder" }, board),
         h("div", { class: "map-side" }, ribbon, cta));
@@ -109,7 +122,14 @@
       let skipped = false, won = false;
       while (true) {
         let resolveQuit; const quitP = new Promise((r) => { resolveQuit = r; });
-        const ctx = { help: !!st.helped[i], alive: true, quit: () => resolveQuit("quit") };
+        const lowered = !!st.helped[i];
+        const chaos = st.difficulty === "chaos" && !lowered;
+        const mods = chaos ? QM.chaosPick(T.id) : [];
+        if (chaos && mods.length) {
+          const D = C().DIFFICULTY;
+          await QM.ui.modal({ title: D.CHAOS_TITLE, node: h("ul", { class: "chaos-list" }, mods.map((m) => h("li", { text: m.name }))), buttons: [{ id: "go", label: D.CHAOS_GO, primary: true }] });
+        }
+        const ctx = { help: lowered || st.difficulty === "easy", mods, alive: true, quit: () => resolveQuit("quit") };
         quitFn = () => { ctx.alive = false; resolveQuit("quit"); };
         QM.ui.hud.show(true, true);
         let res;

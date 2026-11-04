@@ -460,3 +460,6 @@ button { font-family: inherit; }
 .snow i { position: absolute; top: -10px; width: 8px; height: 8px; border-radius: 50%; background: #fff; opacity: .85; animation: snowfall 9s linear infinite; }
 @keyframes snowfall { to { transform: translate(30px, 110vh); } }
 .title-screen .logo span:first-child { color: #ff6b6b; }
+
+.diff-list p, .chaos-list li { text-align: left; font-size: 16px; line-height: 1.4; margin: 6px 0; }
+.chaos-list { padding-left: 20px; margin: 8px 0; }
