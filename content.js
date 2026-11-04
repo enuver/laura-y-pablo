@@ -65,19 +65,19 @@ DEDICATION: {
 
 /* ------------------------------------------------------------- DIFICULTAD
    Se elige al empezar. Si una prueba se resiste, se recomienda bajar a
-   «Coro vocal», pero solo para esa prueba. */
+   «Compro vocal», pero solo para esa prueba. */
 DIFFICULTY: {
   TITLE: "Elige la dificultad",
   LEVELS: {
-    easy:     { name: "Coro vocal", desc: "Fácil. Más tiempo, más margen y menos castigo. Para disfrutar de la historia." },
+    easy:     { name: "Compro vocal", desc: "Fácil. Más tiempo, más margen y menos castigo. Para disfrutar de la historia." },
     standard: { name: "Estándar",   desc: "Media-alta. El reto pensado para quien está acostumbrado a este tipo de juegos." },
     chaos:    { name: "Modo caos",  desc: "Cada intento llega con dos cambios al azar (a favor o en contra), así que cada partida es distinta." },
   },
   SWITCH: "Cambiar dificultad",
   LABEL: "Dificultad",
-  HELP_BTN: "Bajar a Coro vocal (solo en esta prueba)",
-  RECOMMEND: "Esta prueba se resiste. Te recomendamos bajar a «Coro vocal» solo para esta prueba (en la siguiente volverás a tu dificultad), o seguir adelante sin superarla: el objeto es vuestro igualmente.",
-  RECOMMEND_EASY: "Esta prueba se resiste incluso en «Coro vocal». Puedes seguir adelante sin superarla: el objeto es vuestro igualmente.",
+  HELP_BTN: "Bajar a Compro vocal (solo en esta prueba)",
+  RECOMMEND: "Esta prueba se resiste. Te recomendamos bajar a «Compro vocal» solo para esta prueba (en la siguiente volverás a tu dificultad), o seguir adelante sin superarla: el objeto es vuestro igualmente.",
+  RECOMMEND_EASY: "Esta prueba se resiste incluso en «Compro vocal». Puedes seguir adelante sin superarla: el objeto es vuestro igualmente.",
   CHAOS_TITLE: "Modo caos: ¡dos cambios!",
   CHAOS_GO: "¡Vamos!",
 },
