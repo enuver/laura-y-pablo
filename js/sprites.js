@@ -20,12 +20,12 @@
       collarHi: "#d3b48c", tee: "#22242d", pants: "#2c3a56", shoes: "#2a2a2f", teeth: "#fff6e8",
     },
     leire: {
-      skin: "#efc1a1", hair: "#3a2218", hairHi: "#5a3a2b", lips: "#c0475a",
-      top: "#7c4dff", stripe: "#5b34d6", pants: "#1f2433", shoes: "#f4f1ea", lanyard: "#c9a6ff",
+      skin: "#e8b896", hair: "#3a2218", hairHi: "#5a3a2b", lips: "#c0475a",
+      top: "#f6f4f2", purple: "#8f7bd6", band: "#e6ecff", bandDk: "#7a8fd0", pants: "#1f2433", shoes: "#f4f1ea",
     },
     host: {
-      skin: "#e6b08b", hair: "#1d1d26", hairHi: "#3a3a4a", suit: "#18b6c6", suitDk: "#0e8a97",
-      shirt: "#fff6e8", bow: "#ff4d6d", pants: "#0e5f6b", shoes: "#111",
+      skin: "#e2ae8a", hair: "#2a2220", hairHi: "#4a3f3a", stubble: "#6d5b52", suit: "#1f2a4d", suitDk: "#141c38",
+      shirt: "#f4f1ea", stripe: "#1f2a4d", pants: "#1b1f2e", shoes: "#222", frame: "#111", lens: "#dfe8f0",
     },
   };
   S.looks = LOOKS;
@@ -153,18 +153,19 @@
   function leire(R, o) {
     const L = LOOKS.leire, pose = o.pose;
     legs(R, L.pants, L.shoes, 33);
-    R(9, 21, 14, 12, L.top);                                 // camiseta morada (guiño a BTS)
-    R(9, 31, 14, 2, L.stripe);
-    R(12, 24, 3, 2, "#fff"); R(17, 24, 3, 2, "#fff"); R(12, 26, 8, 2, "#fff"); R(13, 28, 6, 1, "#fff"); R(15, 29, 2, 1, "#fff"); // corazón
+    R(9, 21, 14, 12, L.top);                                 // camiseta blanca con letras moradas
+    R(11, 24, 10, 2, L.purple); R(12, 27, 3, 2, L.purple); R(16, 27, 5, 2, L.purple); R(13, 30, 8, 1, L.purple);
+    R(15, 21, 2, 12, "#23202e");                             // correa del bolso cruzada
     R(14, 19, 4, 3, L.skin);
-    R(12, 0, 8, 1, "#c9a6ff");                              // cinta morada en el pelo
-    R(15, 21, 2, 3, L.lanyard);
     arms(R, pose, L.top, L.skin, 5);
+    // lightstick (guiño a BTS) en la mano
+    if (pose === "cheer") { R(26, 0, 4, 4, "#e8d9ff"); R(27, 1, 2, 2, "#8f7bd6"); R(27, 4, 2, 2, "#23202e"); }
+    else if (pose !== "attack") { R(24, 27, 4, 4, "#e8d9ff"); R(25, 28, 2, 2, "#8f7bd6"); R(25, 31, 2, 4, "#23202e"); }
     R(10, 6, 12, 14, L.skin); R(9, 8, 14, 10, L.skin);
     R(8, 11, 1, 3, L.skin); R(23, 11, 1, 3, L.skin);
-    R(12, 0, 8, 4, L.hair); R(13, 1, 2, 1, L.hairHi);        // moño
+    R(8, 0, 5, 4, L.hair); R(19, 0, 5, 4, L.hair); R(9, 2, 1, 1, L.hairHi); R(20, 1, 2, 1, L.hairHi);   // dos moños
     R(9, 3, 14, 5, L.hair); R(10, 8, 12, 2, L.hair); R(9, 8, 1, 6, L.hair); R(22, 8, 1, 6, L.hair);
-    R(14, 4, 4, 1, L.hairHi);
+    R(9, 5, 14, 3, L.band); for (let x = 10; x < 23; x += 3) { R(x, 6, 1, 1, L.bandDk); R(x + 1, 5, 1, 1, L.bandDk); } // bandana
     eyes(R, pose, 12);
     R(10, 15, 2, 1, "#f2a8a0"); R(20, 15, 2, 1, "#f2a8a0");
     if (pose === "idle" || pose === "think") { R(13, 16, 6, 2, "#fff"); R(13, 18, 6, 1, L.lips); R(13, 16, 1, 1, L.lips); R(18, 16, 1, 1, L.lips); }
@@ -174,20 +175,22 @@
   function host(R, o) {
     const L = LOOKS.host, pose = o.pose;
     legs(R, L.pants, L.shoes, 35);
-    R(9, 21, 14, 14, L.suit); R(13, 22, 6, 12, L.shirt);
+    R(9, 21, 14, 14, L.suit); R(13, 22, 6, 12, L.shirt);       // americana azul + camiseta de rayas
+    for (let y = 23; y < 34; y += 3) R(13, y, 6, 1, L.stripe);
     R(9, 21, 4, 11, L.suitDk); R(19, 21, 4, 11, L.suitDk);
-    R(13, 22, 6, 2, L.bow); R(15, 22, 2, 2, "#c9184a");
-    R(11, 33, 2, 2, "#ffd23f");
+    R(20, 26, 2, 1, "#fff");                                   // pañuelo del bolsillo
     R(14, 19, 4, 3, L.skin);
-    arms(R, pose === "idle" ? "idle" : pose, L.suit, L.skin, 11);
+    arms(R, pose, L.suit, L.skin, 11);
     R(10, 6, 12, 14, L.skin); R(9, 8, 14, 10, L.skin);
     R(8, 11, 1, 3, L.skin); R(23, 11, 1, 3, L.skin);
-    R(8, 1, 16, 5, L.hair); R(10, 0, 12, 1, L.hair); R(8, 6, 3, 4, L.hair); R(21, 6, 3, 4, L.hair); R(9, 4, 14, 4, L.hair);
-    R(12, 1, 6, 1, L.hairHi);
-    eyes(R, pose, 12);
-    R(13, 14, 6, 1, L.hair);
+    R(10, 16, 12, 4, L.stubble); R(11, 20, 10, 1, L.stubble); R(9, 14, 2, 4, L.stubble); R(21, 14, 2, 4, L.stubble);  // barba corta
+    R(8, 2, 16, 5, L.hair); R(9, 1, 4, 2, L.hair); R(14, 0, 5, 2, L.hair); R(19, 1, 4, 2, L.hair); R(8, 6, 2, 5, L.hair); R(22, 6, 2, 5, L.hair); R(10, 7, 12, 2, L.hair);
+    R(12, 2, 5, 1, L.hairHi);
+    R(10, 10, 6, 5, L.frame); R(17, 10, 6, 5, L.frame); R(16, 11, 1, 1, L.frame);        // gafas negras gruesas
+    R(11, 11, 4, 3, L.lens); R(18, 11, 4, 3, L.lens);
+    eyes(R, pose, 12, INK, true);
+    R(14, 16, 4, 2, L.stubble);
     mouth(R, pose, INK, "#fff");
-    if (pose === "idle") R(14, 16, 4, 2, "#fff");
   }
 
   const DRAW = { laura, pablo, leire, host };
