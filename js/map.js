@@ -185,13 +185,13 @@
         const isCurrent = isBoda ? next === -1 : next === i;
         const locked = !isDone && !isCurrent;
         b.classList.toggle("done", isDone); b.classList.toggle("current", isCurrent); b.classList.toggle("locked", locked);
-        b.disabled = locked || isDone;
+        b.disabled = locked;
         const badge = b.querySelector(".node-badge");
         badge.textContent = isDone ? "✓" : locked ? "🔒" : "▶";
         const shown = (!isBoda && i === 0 && !items[0]) ? "Siguiente destino" : (isBoda ? "" : C().TRIALS[i].name);
         const nm = isBoda ? "Parroquia de San José Obrero" : "Prueba " + (i + 1) + ": " + shown;
         if (i === 0) { const lb = board.querySelector('.node-label[data-i="0"]'); if (lb) lb.textContent = shown; }
-        const st = isDone ? C().UI.DONE : locked ? C().UI.LOCKED : isBoda ? "Ir a la boda" : "Disponible";
+        const st = isDone ? C().UI.DONE + ". Pulsa para jugarla otra vez" : locked ? C().UI.LOCKED : isBoda ? "Ir a la boda" : "Disponible";
         b.setAttribute("aria-label", nm + ". " + st);
       });
     },

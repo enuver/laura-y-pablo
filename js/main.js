@@ -109,7 +109,7 @@
       if (busy) return; busy = true;
       QM.audio.unlock(); QM.sfx("click");
       try {
-        if (i === 4) await this.finale(); else await this.trial(i);
+        if (i === 4) await this.finale(); else if (QM.state.items[i]) await this.replay(i); else await this.trial(i);
       } finally { busy = false; }
     },
 
@@ -159,6 +159,29 @@
         await QM.sleep(300);
         await QM.ui.dialog("final_intro");
         await this.finale(true);
+      }
+    },
+
+    // Volver a jugar una prueba ya superada (no cambia el progreso ni da objetos)
+    async replay(i) {
+      const T = C().TRIALS[i], game = QM.games[T.id], st = QM.state, U = C().UI;
+      QM.audio.music(T.id === "battle" ? "battle" : null);
+      while (true) {
+        let resolveQuit; const quitP = new Promise((r) => { resolveQuit = r; });
+        const chaos = st.difficulty === "chaos";
+        const mods = chaos ? QM.chaosPick(T.id) : [];
+        if (mods.length) await QM.ui.modal({ title: C().DIFFICULTY.CHAOS_TITLE, node: h("ul", { class: "chaos-list" }, mods.map((m) => h("li", { text: m.name }))), buttons: [{ id: "go", label: C().DIFFICULTY.CHAOS_GO, primary: true }] });
+        const ctx = { help: st.difficulty === "easy", mods, alive: true, quit: () => resolveQuit("quit") };
+        quitFn = () => { ctx.alive = false; resolveQuit("quit"); };
+        QM.ui.hud.show(true, true);
+        let res;
+        try { res = await Promise.race([game.attempt(ctx), quitP]); } catch (e) { console.error(e); res = "quit"; }
+        ctx.alive = false; quitFn = null;
+        if (res === "win") { this.showMap(boardPos); QM.sfx("win"); QM.ui.toast(U.REPLAY_WIN); return; }
+        if (res === "quit") { this.showMap(boardPos); return; }
+        QM.sfx("lose");
+        const c = await QM.ui.modal({ title: T.name, text: U.REPLAY_LOSE, buttons: [{ id: "retry", label: U.RETRY, primary: true }, { id: "quit", label: U.BACK_TO_MAP }] });
+        if (c !== "retry") { this.showMap(boardPos); return; }
       }
     },
 
