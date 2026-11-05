@@ -73,6 +73,7 @@
         }
         function say(t) { text.textContent = t; text.classList.remove("pop"); void text.offsetWidth; text.classList.add("pop"); }
         function bubble(who, t, ms) {
+          if (window.matchMedia && matchMedia("(max-width: 600px)").matches) return;   // en móvil no se superponen globos de texto
           const b = heroEls[who].root.querySelector(".hero-bubble");
           b.textContent = t; b.classList.add("on");
           setTimeout(() => b.classList.remove("on"), ms || 1700);

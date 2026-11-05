@@ -466,3 +466,25 @@ button { font-family: inherit; }
 
 .replay-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
 @media (min-width: 520px) { .replay-grid { grid-template-columns: 1fr 1fr; } }
+
+/* batalla en móvil: el jefe no debe tapar el texto del ataque */
+.intent { position: relative; z-index: 4; }
+.bt-enemy { flex: 0 1 auto; min-height: 0; z-index: 1; position: relative; }
+.bt-field { gap: 10px; }
+.enemy-body { overflow: visible; }
+@media (max-width: 600px) {
+  .enemy-sprite .spr { width: clamp(56px, 9vh, 96px); }
+  .hero-sprite .spr { width: clamp(44px, 8vh, 72px); }
+  .enemy-head { min-width: 0; width: 100%; }
+}
+@media (max-height: 700px) and (max-width: 600px) {
+  .bt-panel { gap: 4px; padding: 6px 8px max(8px, env(safe-area-inset-bottom)); }
+  .bt-turn { min-height: 34px; padding: 2px 8px; } .bt-turn .spr { width: 32px; }
+  .tb-txt b { font-size: 16px; } .bt-text { font-size: 14px; min-height: 2.2em; }
+  .cmd { min-height: 40px; padding: 3px 10px; } .cmd-name { font-size: 14px; } .bt-cmds { gap: 5px; }
+  .hero-tag { font-size: 10px; margin-bottom: 0; padding: 0 6px; }
+  .hero-info { padding: 1px 6px 3px; } .hero-info b { font-size: 12px; } .hp { height: 15px; } .hp span { font-size: 11px; line-height: 11px; }
+  .bt-field { padding: 4px 8px; gap: 6px; } .enemy-head { padding: 2px 8px; }
+  .intent { padding: 2px 8px; font-size: 11.5px; } .duo-meter { padding: 1px 8px; }
+}
+@media (max-height: 600px) and (max-width: 600px) { .enemy-sprite .spr { width: 46px; } .hero-sprite .spr { width: 36px; } }
