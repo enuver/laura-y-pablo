@@ -18,6 +18,21 @@
   A.freq = freq;
 
   // ---------- contexto ----------
+  // iOS: el audio solo arranca dentro de un toque, y el interruptor de silencio del iPhone
+  // calla Web Audio salvo que suene un <audio> normal. Por eso se reproduce un audio mudo en bucle.
+  let keep = null;
+  function startKeepAlive() {
+    if (keep) { if (keep.paused) keep.play().catch(() => {}); return; }
+    try {
+      const n = 800, b = new Uint8Array(44 + n), dv = new DataView(b.buffer);
+      const w = (o, t) => { for (let i = 0; i < t.length; i++) b[o + i] = t.charCodeAt(i); };
+      w(0, "RIFF"); dv.setUint32(4, 36 + n, true); w(8, "WAVEfmt "); dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true);
+      dv.setUint32(24, 8000, true); dv.setUint32(28, 8000, true); dv.setUint16(32, 1, true); dv.setUint16(34, 8, true); w(36, "data"); dv.setUint32(40, n, true);
+      for (let i = 0; i < n; i++) b[44 + i] = 128;
+      keep = new Audio(URL.createObjectURL(new Blob([b], { type: "audio/wav" })));
+      keep.loop = true; keep.volume = 0.01; keep.setAttribute("playsinline", ""); keep.play().catch(() => {});
+    } catch (e) { /* sin audio de apoyo */ }
+  }
   A.unlock = function () {
     try {
       if (!ctx) {
@@ -30,7 +45,10 @@
         musicGain = ctx.createGain(); musicGain.gain.value = 0.55;
         sfxGain.connect(master); musicGain.connect(master); master.connect(ctx.destination);
       }
-      if (ctx.state === "suspended") ctx.resume();
+      if (ctx.state !== "running") { const p = ctx.resume(); if (p && p.catch) p.catch(() => {}); }
+      startKeepAlive();
+      // sonido casi mudo para «despertar» el audio en iOS
+      try { const o = ctx.createOscillator(), g = ctx.createGain(); g.gain.value = 0.0001; o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.05); } catch (e) { /* */ }
       return true;
     } catch (e) { return false; }
   };
@@ -41,7 +59,7 @@
   A.isMuted = () => muted;
   document.addEventListener("visibilitychange", () => {
     if (!ctx) return;
-    if (document.hidden) ctx.suspend(); else if (!muted) ctx.resume();
+    if (document.hidden) { ctx.suspend(); if (keep) keep.pause(); } else if (!muted) { ctx.resume(); if (keep) keep.play().catch(() => {}); }
   });
 
   // ---------- primitivas ----------

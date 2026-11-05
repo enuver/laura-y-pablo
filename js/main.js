@@ -17,9 +17,8 @@
       QM.audio.setMuted(QM.state.muted);
       QM.ui.hud.init();
       // el audio solo puede arrancar tras un toque del usuario
-      const unlock = () => { QM.audio.unlock(); };
-      document.addEventListener("pointerdown", unlock, { once: true });
-      document.addEventListener("keydown", unlock, { once: true });
+      // en iPhone hay que reintentar con cada toque hasta que el audio arranque
+      ["touchend", "click", "pointerdown", "keydown"].forEach((ev) => document.addEventListener(ev, () => QM.audio.unlock(), { passive: true, capture: true }));
       this.title();
     },
 
