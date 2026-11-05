@@ -11,14 +11,15 @@
 
   // Barajas sin repetición: una por categoría, se reparten hasta agotarlas.
   const decks = {};
-  function draw(cat) {
-    const qs = C().TRIVIA_QUESTIONS[cat];
-    let d = decks[cat];
+  function draw(cat, easy) {
+    const qs = (easy ? C().TRIVIA_QUESTIONS_EASY : C().TRIVIA_QUESTIONS)[cat];
+    const key = cat + (easy ? "_e" : "");
+    let d = decks[key];
     if (!d || d.pos >= d.order.length || d.len !== qs.length) {
       const last = d && d.order[d.order.length - 1];
       const order = QM.shuffle(qs.map((_, i) => i));
       if (last !== undefined && order.length > 1 && order[0] === last) [order[0], order[1]] = [order[1], order[0]];
-      d = decks[cat] = { order, pos: 0, len: qs.length };
+      d = decks[key] = { order, pos: 0, len: qs.length };
     }
     return qs[d.order[d.pos++]];
   }
@@ -87,7 +88,7 @@
         // ------------------------------------------------------ pregunta
         function ask(cat) {
           if (locked && cur) return;
-          const row = draw(cat);
+          const row = draw(cat, ctx.help);
           const opts = QM.shuffle([row[1], row[2], row[3], row[4]].map((t, i) => ({ t, ok: i === 0 })));
           cur = { cat, q: row[0], opts, ll: false };
           locked = false; llUsed = false;

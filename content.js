@@ -523,6 +523,70 @@ TEXT: {
   },
 },
 
+/* Preguntas del modo fácil («Compro vocal»): más sencillas. Mismo formato. */
+TRIVIA_QUESTIONS_EASY: {
+  geo: [
+    ["¿Cuál es la capital de Francia?", "París", "Londres", "Roma", "Madrid"],
+    ["¿En qué continente está Egipto?", "África", "Asia", "Europa", "América"],
+    ["¿Qué océano está entre Europa y América?", "El Atlántico", "El Pacífico", "El Índico", "El Ártico"],
+    ["¿Cuál es la capital de España?", "Madrid", "Barcelona", "Valencia", "Sevilla"],
+    ["¿En qué país está la ciudad de Roma?", "Italia", "Grecia", "Portugal", "Alemania"],
+    ["¿Qué mar baña la costa de Castellón?", "El Mediterráneo", "El Cantábrico", "El Mar Rojo", "El Mar del Norte"],
+    ["¿Cuál es el océano más grande del mundo?", "El Pacífico", "El Atlántico", "El Índico", "El Ártico"],
+    ["¿Cuál es la capital de Portugal?", "Lisboa", "Oporto", "Madrid", "Coímbra"],
+  ],
+  his: [
+    ["¿En qué país están las pirámides más famosas?", "Egipto", "México", "China", "Grecia"],
+    ["¿Quién descubrió América en 1492?", "Cristóbal Colón", "Magallanes", "Napoleón", "Julio César"],
+    ["¿En qué ciudad está el Coliseo?", "Roma", "París", "Atenas", "Londres"],
+    ["¿Qué animales usó Aníbal para cruzar los Alpes?", "Elefantes", "Caballos", "Camellos", "Burros"],
+    ["¿Cómo se llamaba la famosa reina de Egipto, amiga de Julio César?", "Cleopatra", "Nefertiti", "Isabel", "Juana"],
+    ["¿De qué país era emperador Napoleón?", "Francia", "España", "Italia", "Rusia"],
+    ["¿De dónde eran los vikingos?", "Del norte de Europa", "De África", "De Asia", "De América"],
+    ["¿Qué reyes financiaron el viaje de Colón?", "Los Reyes Católicos", "Los romanos", "Los egipcios", "Los vikingos"],
+  ],
+  cie: [
+    ["¿Cuál es el planeta en el que vivimos?", "La Tierra", "Marte", "Venus", "Júpiter"],
+    ["¿Qué planeta se llama «el planeta rojo»?", "Marte", "Venus", "Saturno", "Mercurio"],
+    ["¿Cuántos días tiene un año normal?", "365", "300", "400", "250"],
+    ["¿Qué gas necesitamos respirar para vivir?", "Oxígeno", "Helio", "Nitrógeno puro", "Humo"],
+    ["¿Qué órgano bombea la sangre?", "El corazón", "El estómago", "El pulmón", "El riñón"],
+    ["¿Cuál es la estrella más cercana a la Tierra?", "El Sol", "La Luna", "Marte", "Sirio"],
+    ["¿Cuál es el mayor animal del mundo?", "La ballena azul", "El elefante", "El tiburón", "La jirafa"],
+    ["¿Qué fórmula tiene el agua?", "H2O", "CO2", "O2", "NaCl"],
+  ],
+  arte: [
+    ["¿Quién escribió «Don Quijote de la Mancha»?", "Cervantes", "Lorca", "Machado", "Goya"],
+    ["¿Quién pintó la Mona Lisa?", "Leonardo da Vinci", "Picasso", "Velázquez", "Dalí"],
+    ["¿Quién pintó el Guernica?", "Picasso", "Goya", "Miró", "Murillo"],
+    ["¿Cuántas cuerdas tiene una guitarra normal?", "Seis", "Cuatro", "Ocho", "Diez"],
+    ["¿Quién escribió «Romeo y Julieta»?", "Shakespeare", "Cervantes", "Dickens", "Homero"],
+    ["¿Qué instrumento tiene 88 teclas?", "El piano", "La flauta", "El violín", "La trompeta"],
+    ["¿Cuáles son los colores primarios?", "Rojo, azul y amarillo", "Verde, rosa y gris", "Negro, blanco y marrón", "Naranja, morado y verde"],
+    ["¿Quién escribió «Harry Potter»?", "J. K. Rowling", "Tolkien", "Roald Dahl", "Julio Verne"],
+  ],
+  dep: [
+    ["¿Cuántos jugadores juegan por equipo en un partido de fútbol?", "11", "9", "7", "15"],
+    ["¿Cada cuántos años se celebra el Mundial de fútbol?", "Cada 4 años", "Cada año", "Cada 2 años", "Cada 10 años"],
+    ["¿Cuántos aros tiene el símbolo de los Juegos Olímpicos?", "Cinco", "Tres", "Siete", "Cuatro"],
+    ["¿En qué deporte se usa una raqueta y una red?", "Tenis", "Fútbol", "Natación", "Boxeo"],
+    ["¿Cuántos minutos dura un partido de fútbol (sin descuento)?", "90", "60", "120", "45"],
+    ["¿En qué deporte se mete el balón en una canasta?", "Baloncesto", "Fútbol", "Rugby", "Golf"],
+    ["¿Qué deporte se practica en una piscina?", "Natación", "Atletismo", "Ciclismo", "Esquí"],
+    ["¿Con qué parte del cuerpo no se puede tocar el balón en fútbol (salvo el portero)?", "Con las manos", "Con los pies", "Con la cabeza", "Con el pecho"],
+  ],
+  ent: [
+    ["¿Cómo se llama el ratón más famoso de Disney?", "Mickey Mouse", "Stuart Little", "Jerry", "Ratatouille"],
+    ["¿Cómo se llama el león protagonista de «El Rey León»?", "Simba", "Scar", "Mufasa", "Nala"],
+    ["¿De qué color es Shrek?", "Verde", "Azul", "Rojo", "Naranja"],
+    ["¿Cómo se llama el fontanero de Nintendo?", "Mario", "Luigi", "Sonic", "Link"],
+    ["¿Cómo se llama la princesa de hielo de «Frozen»?", "Elsa", "Bella", "Cenicienta", "Ariel"],
+    ["¿Quién es el «Rey del Pop»?", "Michael Jackson", "Elvis", "Freddie Mercury", "Bob Marley"],
+    ["¿Cómo se llama el vaquero de «Toy Story»?", "Woody", "Buzz", "Rex", "Jessie"],
+    ["¿Qué Pokémon es amarillo y lanza rayos?", "Pikachu", "Charmander", "Bulbasaur", "Squirtle"],
+  ],
+},
+
 /* ====================================================================
    PREGUNTAS DEL TRIVIAL
    --------------------------------------------------------------------
