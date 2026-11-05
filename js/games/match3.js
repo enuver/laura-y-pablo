@@ -42,14 +42,14 @@
       return new Promise((resolve) => {
         const TX = C().TEXT.MATCH3;
         const B = C().BALANCE.MATCH3;
-        const mm = QM.applyMods({ MOVES: B.MOVES + (ctx.help ? B.HELP.EXTRA_MOVES : 0), GOAL: Math.round(B.GOAL * (ctx.help ? B.HELP.GOAL_FACTOR : 1)) }, ctx.mods);
+        const mm = QM.applyMods({ MOVES: ctx.help && B.HELP.UNLIMITED_MOVES ? Infinity : B.MOVES, GOAL: ctx.help ? B.HELP.GOAL : B.GOAL }, ctx.mods);
         const moves0 = mm.MOVES, goal = mm.GOAL;
         const rng = Math.random;
         const board = L().newBoard(rng);
         let moves = moves0, score = 0, busy = true, sel = null, finished = false, hintT = null;
         const els = new Map();
 
-        const movesEl = h("b", { class: "or-moves-n", text: String(moves) });
+        const movesEl = h("b", { class: "or-moves-n", text: moves === Infinity ? "∞" : String(moves) });
         const scoreEl = h("b", { class: "or-score-n", text: "0" });
         const fill = h("i", { class: "or-fill" });
         const bar = h("div", { class: "or-bar", role: "progressbar", "aria-valuemin": "0", "aria-valuemax": String(goal), "aria-valuenow": "0", "aria-label": TX.GOAL }, fill, h("span", { class: "or-star", "aria-hidden": "true", text: "★" }));
@@ -87,7 +87,7 @@
           fill.style.width = p + "%"; bar.setAttribute("aria-valuenow", String(Math.min(score, goal)));
           bar.classList.toggle("full", score >= goal);
         }
-        function setMoves(v) { moves = v; movesEl.textContent = String(moves); movesEl.parentElement.classList.toggle("low", moves <= 3); }
+        function setMoves(v) { moves = v; movesEl.textContent = moves === Infinity ? "∞" : String(moves); movesEl.parentElement.classList.toggle("low", moves <= 3); }
         const say = (t) => { msg.textContent = t; msg.classList.remove("pop"); void msg.offsetWidth; msg.classList.add("pop"); };
 
         // --- efectos

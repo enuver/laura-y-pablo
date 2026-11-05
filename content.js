@@ -286,7 +286,7 @@ BALANCE: {
     START_MS: 720,            // velocidad inicial (ms por nota)
     MIN_MS: 300,              // velocidad máxima
     SPEEDUP_MS: 38,           // lo que se acelera en cada ronda
-    HELP: { TARGET_LENGTH: 8, START_MS: 850, MIN_MS: 480, SPEEDUP_MS: 25 },
+    HELP: { TARGET_LENGTH: 5, START_MS: 850, MIN_MS: 480, SPEEDUP_MS: 25 },
   },
 
   MATCH3: {
@@ -294,7 +294,7 @@ BALANCE: {
     GOAL: 4400,               // puntos necesarios
     POINTS_PER_TILE: 20,      // puntos por ficha (se multiplica en cascada)
     SPECIAL_BONUS: 60,        // extra al activar una ficha especial
-    HELP: { EXTRA_MOVES: 6, GOAL_FACTOR: 0.8 },
+    HELP: { GOAL: 1000, UNLIMITED_MOVES: true },   // modo fácil: 1000 puntos y movimientos ilimitados
   },
 
   BATTLE: {
