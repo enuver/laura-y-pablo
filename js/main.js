@@ -163,7 +163,8 @@
     },
 
     // Volver a jugar una prueba ya superada (no cambia el progreso ni da objetos)
-    async replay(i) {
+    async replay(i, toFinale) {
+      const back = () => { if (toFinale) QM.finale.show(); else back(); };
       const T = C().TRIALS[i], game = QM.games[T.id], st = QM.state, U = C().UI;
       QM.audio.music(T.id === "battle" ? "battle" : null);
       while (true) {
@@ -177,11 +178,11 @@
         let res;
         try { res = await Promise.race([game.attempt(ctx), quitP]); } catch (e) { console.error(e); res = "quit"; }
         ctx.alive = false; quitFn = null;
-        if (res === "win") { this.showMap(boardPos); QM.sfx("win"); QM.ui.toast(U.REPLAY_WIN); return; }
-        if (res === "quit") { this.showMap(boardPos); return; }
+        if (res === "win") { back(); QM.sfx("win"); QM.ui.toast(U.REPLAY_WIN); return; }
+        if (res === "quit") { back(); return; }
         QM.sfx("lose");
         const c = await QM.ui.modal({ title: T.name, text: U.REPLAY_LOSE, buttons: [{ id: "retry", label: U.RETRY, primary: true }, { id: "quit", label: U.BACK_TO_MAP }] });
-        if (c !== "retry") { this.showMap(boardPos); return; }
+        if (c !== "retry") { back(); return; }
       }
     },
 

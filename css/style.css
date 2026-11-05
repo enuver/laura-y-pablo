@@ -463,3 +463,6 @@ button { font-family: inherit; }
 
 .diff-list p, .chaos-list li { text-align: left; font-size: 16px; line-height: 1.4; margin: 6px 0; }
 .chaos-list { padding-left: 20px; margin: 8px 0; }
+
+.replay-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 520px) { .replay-grid { grid-template-columns: 1fr 1fr; } }
