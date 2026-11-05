@@ -131,6 +131,7 @@ UI: {
   MUTE_ON: "Sonido: sí",
   MUTE_OFF: "Sonido: no",
   SKIP: "Saltar",
+  TYPE_MS: 34,                 // milisegundos por letra en los diálogos (más alto = más lento)
   NEXT: "Siguiente",
   MENU: "Menú",
   BACK_TO_MAP: "Volver al mapa",
@@ -298,6 +299,7 @@ BALANCE: {
   },
 
   BATTLE: {
+    TEXT_SLOW: 2.2,             // lentitud de los mensajes del combate (1 = rápido; 2.2 = más de doble de tiempo)
     LAURA_HP: 100,
     PABLO_HP: 110,
     ENEMY_HP: 470,

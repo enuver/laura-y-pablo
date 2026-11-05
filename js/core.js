@@ -215,10 +215,10 @@
         typing = true; root.classList.add("typing");
         let tick = 0;
         timer = setInterval(() => {
-          pos += 2; textEl.textContent = full.slice(0, pos);
-          if (++tick % 2 === 0 && full[pos - 1] !== " ") blip(who);
+          pos += 1; textEl.textContent = full.slice(0, pos);
+          if (++tick % 3 === 0 && full[pos - 1] !== " ") blip(who);
           if (pos >= full.length) stopTyping();
-        }, 26);
+        }, C().UI.TYPE_MS || 34);
       }
       function advance() {
         if (done) return;

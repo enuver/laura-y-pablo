@@ -64,7 +64,8 @@
         // ------------------------------------------------------------ utilidades
         function wait(ms) {
           return new Promise((res) => {
-            if (QM.reduceMotion) ms = Math.min(ms, 250);
+            ms = Math.round(ms * (CFG.TEXT_SLOW || 1));
+            if (QM.reduceMotion) ms = Math.min(ms, 400);
             const t = setTimeout(done, ms);
             function done() { clearTimeout(t); root.removeEventListener("pointerdown", done); res(); }
             root.addEventListener("pointerdown", done, { once: true });
@@ -139,7 +140,7 @@
           if (over || s.phase !== "heroes") { turnBanner.replaceChildren(); turnBanner.removeAttribute("data-who"); return; }
           const w = L().actor(s);
           turnBanner.dataset.who = w;
-          turnBanner.replaceChildren(QM.sprites.portrait(w), h("div", { class: "tb-txt" }, h("b", { text: TX.TURN_OF.replace("{who}", NAME(w)) }), h("small", { text: "Pasa el dispositivo a quien lleva a " + NAME(w) + "." })));
+          turnBanner.replaceChildren(QM.sprites.portrait(w), h("div", { class: "tb-txt" }, h("b", { text: TX.TURN_OF.replace("{who}", NAME(w)) }), null));
           addClass(turnBanner, "pop", 600);
         }
 
