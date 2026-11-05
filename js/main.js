@@ -161,9 +161,11 @@
       }
     },
 
+    openMap() { QM.finale.stop(); this.showMap(targetPos()); },
+
     // Volver a jugar una prueba ya superada (no cambia el progreso ni da objetos)
     async replay(i, toFinale) {
-      const back = () => { if (toFinale) QM.finale.show(); else back(); };
+      const back = () => { if (toFinale) QM.finale.show(); else this.showMap(boardPos); };
       const T = C().TRIALS[i], game = QM.games[T.id], st = QM.state, U = C().UI;
       QM.audio.music(T.id === "battle" ? "battle" : null);
       while (true) {

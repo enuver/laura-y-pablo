@@ -284,11 +284,15 @@
   UI.menu = async function () {
     const buttons = [{ id: "close", label: "Seguir jugando", primary: true }];
     if (UI.canQuit && UI.canQuit()) buttons.push({ id: "quit", label: C().UI.BACK_TO_MAP });
-    else buttons.push({ id: "diff", label: C().DIFFICULTY.SWITCH });
+    else {
+      if (QM.progress() > 0) buttons.push({ id: "map", label: "Mapa: volver a jugar una prueba" });
+      buttons.push({ id: "diff", label: C().DIFFICULTY.SWITCH });
+    }
     buttons.push({ id: "restart", label: C().GAME.NEW_GAME });
     const r = await UI.modal({ title: C().UI.MENU, buttons, cancel: "close" });
     if (r === "quit") UI.doQuit && UI.doQuit();
     if (r === "diff") QM.flow.pickDifficulty(false);
+    if (r === "map") QM.flow.openMap();
     if (r === "restart" && (await UI.confirm(C().UI.RESTART_CONFIRM))) { QM.flow.restart(); }
   };
 

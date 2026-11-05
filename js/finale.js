@@ -120,10 +120,6 @@
               h("dt", { text: "Ceremonia" }), h("dd", { text: W.CEREMONY }),
               h("dt", { text: "Convite" }), h("dd", { text: W.PARTY.replace(/^Convite en /, "") }))),
           cdBox,
-          h("div", { class: "card fin-card replay-card" },
-            h("h2", { text: "Volver a jugar una prueba" }),
-            h("div", { class: "replay-grid" }, C().TRIALS.map((T, i) => h("button", { class: "btn btn-alt", type: "button", text: (i + 1) + ". " + (i === 3 ? "Camino a San José Obrero" : T.name),
-              onclick: () => { QM.audio.unlock(); QM.sfx("click"); QM.finale.stop(); QM.flow.replay(i, true); } })))),
           h("p", { class: "moral", text: TX.MORAL }),
           h("button", { class: "btn btn-big", type: "button", text: C().UI.PLAY_AGAIN, onclick: async () => {
             if (await QM.ui.confirm(C().UI.RESTART_CONFIRM)) { QM.finale.stop(); QM.flow.restart(); }
