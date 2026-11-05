@@ -271,14 +271,14 @@ TRIALS: [
 BALANCE: {
 
   // Tras cuántos intentos fallidos en una prueba se ofrece ayuda / continuar.
-  HELP_AFTER_FAILS: 3,
+  HELP_AFTER_FAILS: 2,
 
   TRIVIA: {
     CORRECT_PER_MEDAL: 2,     // aciertos necesarios en cada categoría
     MAX_STRIKES: 5,           // fallos permitidos antes de que se apaguen los focos
     SECONDS_PER_QUESTION: 25, // tiempo por pregunta
     LIFELINES: 1,             // comodines «50 %» por intento
-    HELP: { CORRECT_PER_MEDAL: 1, MAX_STRIKES: 8, SECONDS_PER_QUESTION: 40, LIFELINES: 2 },
+    HELP: { CORRECT_PER_MEDAL: 1, MAX_STRIKES: 8, SECONDS_PER_QUESTION: 40, LIFELINES: 4 },
   },
 
   CHOIR: {
