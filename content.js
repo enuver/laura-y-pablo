@@ -278,7 +278,7 @@ BALANCE: {
     MAX_STRIKES: 5,           // fallos permitidos antes de que se apaguen los focos
     SECONDS_PER_QUESTION: 25, // tiempo por pregunta
     LIFELINES: 1,             // comodines «50 %» por intento
-    HELP: { MAX_STRIKES: 8, SECONDS_PER_QUESTION: 40, LIFELINES: 4 },
+    HELP: { CORRECT_PER_MEDAL: 1, MAX_STRIKES: 8, SECONDS_PER_QUESTION: 40, LIFELINES: 2 },
   },
 
   CHOIR: {
